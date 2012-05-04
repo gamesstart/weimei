@@ -446,7 +446,12 @@ input[type="text"] {
 	overflow: hidden;
 	line-height: 40px;
 }
-
+#upload-main {
+    margin-top: 50px;
+}
+.upload-notice{
+	
+}
 #upload .item label {
 	border: 0 solid black;
 	clear: both;
