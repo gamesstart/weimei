@@ -49,9 +49,9 @@ class article extends CI_Controller {
 						'name' => $this->input->post ( 'title' ),
 						'content' => toText ( $this->input->post ( 'content' ))
 						);
-				$data['description']=$data['content'];
-				//提取nail图
 				$pattern = '/\[img\](\d+)\[\/img\]/i';
+				$data['description']=preg_replace($pattern,'',$data['content']);
+				//提取nail图
 				preg_match($pattern, $data['content'],$res);
 				$this->load->Model ( 'Article_m' );
 				$res=$this->Article_m->get_pic($res[1]);
