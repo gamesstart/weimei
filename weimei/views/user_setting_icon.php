@@ -7,7 +7,7 @@ $this->load->view('header');
 	<div class="content">
 		<ul class="ihome-nav">
 		<li><a href="/user/set">个人资料</a></li>
-		<li class="current">修改头像</a></li>
+		<li class="current">修改头像</li>
 		<li><a href="/user/set_pwd">修改密码</a></li>
 		</ul>
 		<table>
