@@ -82,8 +82,10 @@ function miniPic($src){
 }
 /*url替换*/
 function url_replace($target){
-	$search=array(',','，','·',' ');
-	return str_replace($search,'-', $target);
+	//these cahrs are valid in url ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=
+	$search=array(',','，','·',' ','。','"','[',']','^','~','$','!','>','<','?','？');
+	$res=str_replace($search,'-', $target);
+	return preg_replace('/-+/','-', $res);
 }
 
 
