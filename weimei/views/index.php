@@ -2,9 +2,11 @@
 $this->load->view('header');
 ?>
 		<div id="main">
+			<?php
+			$this->load->view('slidebar');
+			?>			
 			<div id="inner-main">
 				<div id="left">
-
 					<div class="height1"></div>
 					<div id="class-bar">
 						<span>公告:唯美小站~刚刚上线，大家多多支持哦哦，争做最好的图片分享网站，新功能完善中:)</span>
@@ -25,8 +27,6 @@ $this->load->view('header');
 <ul id="pagelist">
 					<?=$page_list_link?>
 						</ul>
-
-
 				</div>
 				<!---left end--->
 				<div id="right">
@@ -64,12 +64,14 @@ $this->load->view('header');
 				</div>
 				<!---right end--->
 			</div>
+			<div class="br"></div>
 			<div id="link">
 			<h2 class="h2-t">友情链接······</h2>
 			<li><a target="_blank" href="http://www.qwbus.com/">趣味巴士网</a></li> 
 			<li><a target="_blank" href="http://www.moxiaolu.com/">爱Cool设计</a></li> 
 			<li><a target="_blank" href="http://www.2weimei.com/">爱唯美小站</a></li> 
 			</div>
+			<div class="br"></div>
 		</div>
 <?php
 $this->load->view('footer');

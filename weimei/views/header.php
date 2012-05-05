@@ -31,32 +31,15 @@
 					<a href="<?=base_url()?>"><img src="/style/images/logo.png"/></a>
 				</div>
 				<div id="user-msg">
-				 <?php
-				 //改用cookie判断
-				 /*
-			 $this->load->library('session');
-          if($this->session->userdata('userId'))
-          echo "你好,".$this->session->userdata('username')."&nbsp;&nbsp;<a class='link1' href=".site_url('user/set').">设置</a> <a class='link1' href=".site_url('user/login_out').">退出</a>";
-          	else
-			 		echo "你好，请 <A class=link1 href=".site_url('user/login').">登录</A> 或者 <A class=link1 href=".site_url('user/reg').">注册</A>，<A class=link3 href=".site_url('user/lost_pwd').">忘记密码？</A>";
-           	*/	?>
+					<a class="login" href="/auth/login/"><span>Log In</span></a>
+					<a class="join" href="#"><span>Join Piccsy</span></a>
 				</div>
+				<div class="search">
+			      <img src="/style/images/icon-search.gif">	
+				    <input type="text" title="Search" value="Search" id="search" name="q">
+				</div><!--END SEARCH-->
 			</div>
 		</div>
 		<!---header end--->
-		<div id="menu">
-			<ul id="inner-menu">
-				<li> <A class="selected" href="/">首页</A> </li>
- 				<li> <A  href="/pic/">美图</A> </li>
-				<li> <A  href="/avatar/">头像</A> </li>
-				<li> <A  href="/article/">文字</A> </li>
-				<!--
-				<li> <A  href="/music')?>">一日一♫</A> </li>
-				<li> <A  href="album')?>">专辑</A> </li>	
-				<li> <A class="selected" href="/">标签</A> </li>
-				<li> <A class="selected" href="/">活跃用户</A> </li>
-				  -->
-			</ul>
-		</div>
-		<!---menu end--->
+
 		<div class="br"></div>
