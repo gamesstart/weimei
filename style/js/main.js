@@ -166,36 +166,36 @@ $(function() {
 			title.text('未命名');
 			t=title.text();
 		}
-		if($('#r-u-a span a').text()==$('#user-msg a:first').text()&&userId)
+		if($('#r-u-a span a').text()==$('#sidebar-widget-profile a:first').text()&&userId)
 			$('#r-u-a').append("<div class='edit'><a href='#' class='red-btn'>修改标题</a></div>");
 		$('#r-u-a .edit').click(function(){
-			title.html("<input type='text' name='title'/><input class='red-btn'  type='button' id='rename-btn'  value='确认修改'/><input class='red-btn'  type='button' value='取消'/>");
+			title.html("<input type='text' id='change-title' name='title'/><input class='red-btn'  type='button' id='rename-btn'  value='确认修改'/><input id='cancel-change' class='red-btn'  type='button' value='取消'/>");
 		});
 		//提交修改后的标题
 		$('#rename-btn').live('click',function(){
-			if($('input:eq(0)').val()=='')
+			if($('#change-title').val()=='')
 				alert('标题不能为空!');
 			else{
 			   //ajax
 			   $.ajax({
 				   type : 'POST',
 				   url : siteurl+'/pic/rename',
-				   data : 'id='+$('h1').attr('pid')+'&name='+$('input:eq(0)').val(),
+				   data : 'id='+$('h1').attr('pid')+'&name='+$('#change-title').val(),
 				   success : function(msg) {
-					   title.text($('input:eq(0)').val());
+					   title.text($('#change-title').val());
 				   }
 			   });
 		   
 			}
 		});
 		//取消恢复原来标题
-		$('input:eq(2)').live('click',function(){
+		$('#cancel-change').live('click',function(){
 		   title.text(t);
 		});
 	}
 	/*修改文章*/
 	if($('#r-u-a span').length&&$('#left h1').length&&tid[0]=='e'){
-		if($('#r-u-a span a').text()==$('#user-msg a:first').text()&&userId)
+		if($('#r-u-a span a').text()==$('#sidebar-widget-profile a:first').text()&&userId)
 		$('#r-u-a').append("<div class='edit'><a href='"+siteurl+'/article/edit?id='+tid.replace(tid[0],'')+"' class='red-btn'>编辑文章</a></div>");
 	}
 	/*前期tag没有标题补全*/
