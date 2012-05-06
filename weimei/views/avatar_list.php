@@ -2,12 +2,12 @@
 $this->load->view ( 'header' );
 ?>
 <div id="main">
+<?php $this->load->view('sidebar'); ?>	
 <div id="inner-main">
-<div id="left">
 <div id="class-bar"><span>分类 · · · · · ·</span>
 <span id="create"><a href="/avatar/upload">发布照片</a></span></div>
 
-<div id="pic">
+<div id="avatar">
 <?php foreach ($imgs as $img) { ?>
 <div class="avatarBox">
 <div class="avatarInnerBox">
@@ -22,11 +22,8 @@ $this->load->view ( 'header' );
 </div>
 
 <div class="br"></div>
-<ul id="pagelist"> <?=$page_list_link?> </ul>
-<!---pic end---></div>
-<!---left end--->
-<div id="right"></div>
-<!---left end---></div>
+<ul id="pagelist"> <?=$page_list_link?></ul>
+<!---inner-mian end---></div>
 </div>
 <?php $this->load->view ( 'footer' );
 ?>
