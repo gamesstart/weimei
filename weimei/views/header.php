@@ -31,8 +31,8 @@
 					<a href="<?=base_url()?>"><img src="/style/images/logo.png"/></a>
 				</div>
 				<div id="user-msg">
-					<a class="login" href="/auth/login/"><span>Log In</span></a>
-					<a class="join" href="#"><span>Join Piccsy</span></a>
+					<a class="login" href="/user/login/"><span>登录</span></a>
+					<a class="join" href="/user/reg/"><span>加入</span></a>
 				</div>
 				<div class="search">
 			      <img src="/style/images/icon-search.gif">	

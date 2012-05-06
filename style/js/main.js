@@ -71,7 +71,7 @@ $(function() {
 	
 	if(userId){
 		$('#user-msg').hide();
-		$('#sidebar-widget-profile').html('<img src="'+icon+'"><ul class="main"><li class="profile-info"><a href="/user/i/'+userId+'">h2ero</a></li><li class="profile-info"> <a href="/user/i/'+userId+'">个人档</a> </li><li class="profile-info"> <a href="/user/set/">设置</a> </li></ul><div class="br"></div>');
+		$('#sidebar-widget-profile').html('<img src="'+icon+'"><ul class="main"><li class="profile-info"><a href="/user/i/'+userId+'">h2ero</a></li><li class="profile-info"> <a href="/user/set/">设置</a> </li><li class="profile-info"> <a href="/user/login_out">退出</a></li></ul><div class="br"></div>');
 	}else{
 	}
 	/*退出清除cookie*/

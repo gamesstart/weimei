@@ -22,7 +22,7 @@ $this->load->view ( 'header' );
 </div>
 
 <div class="br"></div>
-<ul id="pagelist"> <?=$page_list_link?></ul>
+<ul id="pagelist"><?=$page_list_link?></ul>
 <!---inner-mian end---></div>
 </div>
 <?php $this->load->view ( 'footer' );
