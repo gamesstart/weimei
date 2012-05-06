@@ -5,7 +5,7 @@
 				<div id="left">
 					<div class="height1"></div>
 					<div id="class-bar">
-						<span>公告:唯美小站~刚刚上线，大家多多支持哦哦，争做最好的图片分享网站，新功能完善中:)</span>
+						<span>公告:唯美小站~刚刚上线，大家多多支持哦哦，争做最好的图片分享网站，完善中:)</span>
 					</div>
 					<div class="br"></div>
 					<div id="pic">

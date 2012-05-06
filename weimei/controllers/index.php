@@ -16,7 +16,7 @@ class Index extends CI_Controller{
 		);
 		$this->load->Model('Index_m');
 		$data['users']=$this->Index_m->get_latest_user();
-		$data['comments']=$this->Index_m->get_latest_comment();
+		$data['comments']=$this->Index_m->get_latest_comment(10);
 		$data['avatars']=$this->Index_m->avatar();
 		$data['articles']=$this->Index_m->article();
 		$data['tags']=$this->Index_m->tag();

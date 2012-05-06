@@ -8,9 +8,9 @@ class Index_m extends CI_Model{
 		$query = $this->db->order_by('id','desc')->get('user',10);
 		return $query->result();
 	}
-	function get_latest_comment(){
+	function get_latest_comment($count){
 		$this->db->select('icon,user.id userId,comment.date date,content,username');
-		$query=$this->db->from('comment')->order_by('comment.id','desc')->join ( 'user', "user.id=comment.userId" )->limit(5,0)->get();
+		$query=$this->db->from('comment')->order_by('comment.id','desc')->join ( 'user', "user.id=comment.userId" )->limit($count,0)->get();
 		return $query->result();
 	}
 	function avatar() {
