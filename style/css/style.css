@@ -113,9 +113,10 @@ input[type="text"] {
 }
 /*顶部*/
 #header {
-    background: url("/style/images/bg-header.jpg") repeat scroll 0 0 transparent;
-    height: 30px;
-    padding: 10px 0;
+  background:url(/style/images/bg-header.jpg) 0px 0;
+  height:30px;
+  padding-bottom:9px;
+  padding-top:10px;
 }
 #logo {
 	float: left;
@@ -204,6 +205,8 @@ input[type="text"] {
 }
 #user-msg .login {
     background: url("../images/button-log.png") no-repeat scroll 0 0 transparent;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/style/images/button-log.png'); 
+    _background-image: none; /* IE6 */
     border: medium none;
     color: #FFFFFF;
     cursor: pointer;
@@ -217,6 +220,8 @@ input[type="text"] {
 }
 #user-msg .join {
     background: url("../images/button-join.png") no-repeat scroll 0 0 transparent;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/style/images/button-join.png'); /* IE6 */
+    _background-image: none; /* IE6 */
     border: medium none;
     color: #FFFFFF;
     cursor: pointer;
@@ -238,7 +243,8 @@ input[type="text"] {
 }
 .search img {
     float: left;
-    margin-left: 5px;
+    margin-left:5px;
+    _margin-left:6px;
 }
 #search {
     background: none repeat scroll 0 0 #FFFFFF;
@@ -428,6 +434,7 @@ input[type="text"] {
     margin: 5px;
     overflow: hidden;
     width: 240px;
+    _width: 240px;
 }
 .avatarInnerBox {
 	border: 1px solid #E6E6E6;
