@@ -93,8 +93,8 @@ class User extends CI_Controller {
 	function login_out() {
 		$this->session->sess_destroy ();
 		$this->load->helper('cookie');
-		delete_cookie('userId');
-		delete_cookie('username');
+		delete_cookie('userId',getDomain(),'/');
+		delete_cookie('username',getDomain(),'/');
 		//显示成功信息并跳转
 		$data=array('msg'=>'退出成功！',
 				'url'=>site_url ( 'user/login' ));

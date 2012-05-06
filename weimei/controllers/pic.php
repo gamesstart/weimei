@@ -100,7 +100,7 @@ class Pic extends CI_Controller {
 					'domain' => getDomain(),
 					'path'   => '/'
 			);
-			set_cookie($cookie);
+			$this->input->set_cookie($cookie);
 		}
 		}
 		$this->load->view ( 'pic_upload', $data );

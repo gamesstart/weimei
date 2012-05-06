@@ -1,7 +1,7 @@
 <?php
 $this->load->view('header');
 ?>
-<div class="main">
+<div id="main">
 		<div id="inner-main">
 	<h1>新用户注册</h1>
 	<div class="content">
