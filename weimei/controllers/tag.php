@@ -20,7 +20,7 @@ class Tag extends CI_Controller {
 		
 	}
 	function search_tag($tag){
-			if($tag[0]=='%')
+			if(strpos($tag,'%')!==false)
 			$tag=urldecode($tag);
 			//url 传递tag在windows上面为gb2312时候
 			elseif($tag[0]<=127)
