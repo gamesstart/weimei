@@ -5,52 +5,36 @@
 </div>
 <div class="sidebar-widget">
 	<h3>栏目</h3>
-	<ul class="pad-left">
- 		<li> <a href="/pic/">美图</a> </li>
-		<li> <a href="/avatar/">头像</a> </li>
-		<li> <a href="/article/">文字</a> </li>
-		<li><a href="/?from=all">Most Recent</a> </li>
-		<li><a href="/?popular=recent">Most Popular</a> </li>
-		<li><a href="/?from=all">Most Recent</a> </li>
+	<ul>
+ 		<li><a href="/pic/">美图</a> </li>
+		<li><a href="/avatar/">头像</a> </li>
+		<li><a href="/article/">文字</a> </li>
+		<li><a href="#">Most Recent</a> </li>
+		<li><a href="#">Most Popular</a> </li>
+		<li><a href="#">Most Recent</a> </li>
 	</ul>
 </div>
 <div id="sidebar-widget-stream" class="sidebar-widget">
-	<h3>分类(
-		<span id="sidebar-widget-stream-count-follow">1</span>
-		<span id="sidebar-widget-stream-count-all" style="display: none;">33</span>
-		)
-	</h3>
+	<h3>分类(<span id="sidebar-widget-stream-count-follow">1</span>)</h3>
 	<div id="streams-container">
 	    <ul class="streams">
 	        <li class="title">To follow a stream</li>
-		<li class="stream "> <a class="stream-link" href="/?popular=recent">全部</a> </li>
-	        <li class="stream not-followed hidden"> <a class="stream-link" href="/stream/typography">卡通(811) </a> <a class="follow-link" rel="23" href="#" title=""><img alt="Click to follow" src="/style/images/cross-stream-transparent.png"></a> </li>
-	        <li class="stream not-followed hidden"> <a class="stream-link" href="/stream/typography">唯美(811) </a> <a class="follow-link" rel="23" href="#" title=""><img alt="Click to follow" src="/style/images/cross-stream-transparent.png"></a> </li>
-	        <li class="stream not-followed hidden"> <a class="stream-link" href="/stream/typography">创意(811) </a> <a class="follow-link" rel="23" href="#" title=""><img alt="Click to follow" src="/style/images/cross-stream-transparent.png"></a> </li>
-	        	    </ul>
-	    <a id="view-all-streams" href="#" class="link bold">View All</a>
-		<a id="view-less-streams" href="#" class="link bold" style="display:none">View Less</a>
+			<li> <a class="stream-link" href="#">全部</a> </li>
+	        <li><a href="#">卡通(811) </a> <a href="#"><img src="/style/images/cross-stream-transparent.png"></a> </li>
+	        <li><a href="#">唯美(811) </a> <a href="#"><img src="/style/images/cross-stream-transparent.png"></a> </li>
+	        <li><a href="#">创意(811) </a> <a href="#"><img src="/style/images/cross-stream-transparent.png"></a> </li>
+	     </ul>
+	    <a id="view-all-streams" href="#" >View All</a>
 	</div>
-
-	</div>
+</div>
 <div class="sidebar-widget">
 	<h3>时间</h3>
-	<ul class="pad-left">
-		<li class="">
-			<a href="/?popular=day">今天</a>
-		</li>
-		<li class="">
-			<a href="/?popular=week">本周</a>
-		</li>
-		<li class="">
-			<a href="/?popular=month">本月</a>
-		</li>
-		<li class="">
-			<a href="/?popular=year">本年</a>
-		</li>
-		<li class="">
-			<a href="/?popular=all_time">全部时间</a>
-		</li>
+	<ul>
+		<li class=""> <a href="#" >今天</a> </li>
+		<li class=""> <a href="#" >本周</a> </li>
+		<li class=""> <a href="#" >本月</a> </li>
+		<li class=""> <a href="#" >本年</a> </li>
+		<li class=""> <a href="#" >全部时间</a> </li>
 	</ul>
 </div>
 </div>
