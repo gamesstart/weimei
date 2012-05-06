@@ -1,5 +1,6 @@
 <?php $this->load->view ( 'header' ); ?>
 <div id="main">
+<?php $this->load->view('sidebar'); ?>			
 <div id="inner-main">
 <div id="left">
 <h1> <?=$imgs[0]->name?> </h1>
@@ -54,7 +55,8 @@
 	</div>
 	<!--tags end -->
 </div>
-<!---left end---></div>
+<div class="br"></div>
+<!---innermain end---></div>
 </div>
 <?php
 $this->load->view ( 'footer' );

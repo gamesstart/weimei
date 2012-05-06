@@ -1,6 +1,7 @@
 <?php $this->load->view ( 'header' ); ?>
 
 <div id="main">
+<?php $this->load->view('sidebar'); ?>			
 <div id="inner-main">
 <div id="left">
 <h1 pid='<?=$id?>'><?=$name?></h1>
@@ -66,6 +67,7 @@
 	<!-- relate pic -->
 </div>
 <!---left end---></div>
+<div class="br"></div>
 </div>
 
 <?php $this->load->view ( 'footer' ); ?>

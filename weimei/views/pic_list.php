@@ -1,5 +1,7 @@
 <?php $this->load->view ( 'header' ); ?>
 <div id="main">
+<?php $this->load->view('sidebar'); ?>			
+<div id="inner-main">
 <div id="class-bar">分类 · · · · · ·</span> <span id="create"><a href="<?=site_url ( 'pic/upload' )?>">发布照片</a></span></div>
 <div id="pic">
 <?php foreach ( $imgs as $img ) { ?>
@@ -17,5 +19,7 @@
 					<?=$page_list_link?>
 						</ul>
 <!---pic end--->
+</div>
+<div class="br"></div>
 </div>
 <?php $this->load->view ( 'footer' ); ?>

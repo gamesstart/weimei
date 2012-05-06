@@ -40,6 +40,7 @@
 		<!-- right user msg end-->
 </div>
 <!---left end--->
+<div class="br"></div>
 </div>
 <?php
 $this->load->view ( 'footer' );

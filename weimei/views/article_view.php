@@ -1,10 +1,9 @@
 <?php $this->load->view ( 'header' ); ?>
 <div id="main">
+<?php $this->load->view('sidebar'); ?>
 <div id="inner-main">
 <div id="left">
 <h1 pid='<?=$id?>'><?=$title?></h1>
-<a id='like'></a>
-
 <div class="height1"></div>
 <pre>
 <?=$content?>
@@ -52,7 +51,6 @@
 	</div>
 	<!--tags end -->
 </div>
-<!---left end---></div>
 </div>
 <?php
 $this->load->view ( 'footer' );

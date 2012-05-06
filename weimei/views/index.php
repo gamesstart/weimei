@@ -1,10 +1,6 @@
-<?php
-$this->load->view('header');
-?>
+<?php $this->load->view('header'); ?>
 		<div id="main">
-			<?php
-			$this->load->view('slidebar');
-			?>			
+			<?php $this->load->view('sidebar'); ?>			
 			<div id="inner-main">
 				<div id="left">
 					<div class="height1"></div>
@@ -73,6 +69,4 @@ $this->load->view('header');
 			</div>
 			<div class="br"></div>
 		</div>
-<?php
-$this->load->view('footer');
-?>
+<?php $this->load->view('footer'); ?>

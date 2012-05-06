@@ -1,7 +1,7 @@
 <?php $this->load->view ( 'header' ); ?>
 <div id="main">
+<?php $this->load->view('sidebar'); ?>			
 <div id="inner-main">
-<div id="left">
 <div id="class-bar"><span>分类 · · · · · ·</span> <span id="create"><a href="<?=site_url('article/add')?>">发布文章</a></span></div>
 <div id="article">
 <?php foreach ($articles as $a){?>
@@ -14,9 +14,7 @@
 </div>
 <div class="br"></div>
 <ul id="pagelist"> <?=$page_list_link?> </ul>
-<!---pic end---></div>
-<!---left end--->
-<div id="right"></div>
+<!---pic end--->
 <!---left end---></div>
 </div>
 <?php $this->load->view ( 'footer' ); ?>
