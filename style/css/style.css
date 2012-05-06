@@ -368,7 +368,7 @@ input[type="text"] {
     height: 82px;
     width: 110px;
 }
-#pic,#avatar,#article{
+#pic,#avatar,#article,#tag{
 	float:right;
 }
 #avatar,#article{
@@ -542,7 +542,7 @@ input[type="text"] {
 .labels-add {
     margin-top: 10px;
 }
-#tags {
+#tags{
     background: none repeat scroll 0 0 #FFFFFF;
     border: 1px solid #CCCCCC;
     margin-top: 7px;
@@ -566,9 +566,21 @@ input[type="text"] {
     height: 17px;
 	line-height:17px;
 }
+/*tag list*/
+#tag{
+	width:750px;
+}
+#tag li {
+    border-bottom: 1px dashed #CCCCCC;
+    list-style: none outside none;
+    padding: 5px 0;
+}
+#tag span {
+    float: right;
+}
 /*文字*/
 #article li {
-    border-bottom:1px solid #F1F1F1; 
+    border-bottom: 1px dashed #CCCCCC;
     height: 85px;
     list-style: none outside none;
     padding: 20px 0;
