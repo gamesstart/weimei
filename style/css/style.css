@@ -131,7 +131,9 @@ input[type="text"] {
     margin: 10px auto 0;
     min-height: 600px;
     padding: 20px;
-    width: 920px;
+    width: 920px; 
+  	height:auto !important;
+  	height:600px;
 }
 #sidebar {
     float: left;
