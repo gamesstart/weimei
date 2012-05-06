@@ -169,8 +169,10 @@ input[type="text"] {
 #sidebar .sidebar-widget li a {
   color: #636363;
 }
-#sidebar #sidebar-widget-profile img {
-  float: left;
+#sidebar #sidebar-widget-profile img{
+	border: 1px solid #000000;
+	width: 45px;
+  	float: left;
 }
 #sidebar #sidebar-widget-profile ul {
   float: left;

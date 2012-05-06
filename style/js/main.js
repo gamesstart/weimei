@@ -36,6 +36,7 @@
 	/*登录信息*/
 	var userId=Cookie.get('userId');
 	var username=Cookie.get('username');
+	var icon=decodeURI(Cookie.get('icon'));
 	var session=Cookie.get('weimei');
 	if(!session){
 		Cookie.unset('userId','/','.'+getDomain());
@@ -69,10 +70,9 @@ $(function() {
 	}
 	
 	if(userId){
-		//$('#user-msg').html("你好,<a href='"+siteurl+"/user/i/"+userId+"'>"+username+"</a>&nbsp;&nbsp;<a class='link1' href='"+siteurl+"/user/set'>设置</a> <a class='link1' id='loginout' href='"+siteurl+"/user/login_out'>退出</a>	");
-		 			
+		$('#user-msg').hide();
+		$('#sidebar-widget-profile').html('<img src="'+icon+'"><ul class="main"><li class="profile-info"><a href="/user/i/'+userId+'">h2ero</a></li><li class="profile-info"> <a href="/user/i/'+userId+'">个人档</a> </li><li class="profile-info"> <a href="/user/set/">设置</a> </li></ul><div class="br"></div>');
 	}else{
-		 //$('#user-msg').html("你好，请 <a class='link1' href='"+siteurl+"/user/login'>登录</a> 或者 <a class='link1' href='"+siteurl+"/user/reg'>注册</a>，<a class='link3' href='"+siteurl+"/user/lost_pwd'>忘记密码？</a>");
 	}
 	/*退出清除cookie*/
 	$('#loginout').live('click',function(){

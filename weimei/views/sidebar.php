@@ -2,21 +2,6 @@
 <h2>
 	Filter	<a class="sidebar-xl-toggle" href="/thumbsize/set/tmbs0">Show less</a></h2>
 <div id="sidebar-widget-profile" class="sidebar-widget">
-    <a href=""><img width="60" height="60" src="/uploads/icon/1.jpg.min.jpg" alt="Profile"></a>
-    <ul class="main">
-		<li class="profile-info bold">
-			<a href="h2ero.piccsy.com">h2ero</a>
-		</li>
-		<li class="profile-info bold">
-			<a href="h2ero.piccsy.com">View Profile</a>
-		</li>
-		<li class="profile-info bold">
-			<a href="h2ero.piccsy.com">View Image Feed</a>
-		</li>
-		<li class="profile-info">
-			12 Followers		</li>
-    </ul>
-	<div style="clear:both;"></div>
 </div>
 <div class="sidebar-widget">
 	<h3>栏目</h3>

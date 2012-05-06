@@ -73,6 +73,14 @@ class User extends CI_Controller {
                    'path'   => '/'
                );
                $this->input->set_cookie($cookie); 
+               $cookie = array(
+               		'name'   => 'icon',
+               		'value'  => $user->icon,
+               		'expire' => '86400',
+               		'domain' => getDomain(),
+               		'path'   => '/'
+               );
+               $this->input->set_cookie($cookie);
 				Header ( "Location:" . site_url ( 'user/set' ) );
 			} else {
 				$data ['error'] = '错误：用户名或密码不正确。';
