@@ -273,7 +273,7 @@ input[type="text"] {
     line-height: 18px;
 }
 #latest-user-avatar img {
-    border: 1px solid #fff;
+    border: 1px solid #ccc;
     padding: 1px;
 }
 #latest-comments {
@@ -291,7 +291,7 @@ input[type="text"] {
     margin-right: 5px;
 }
 .l-c-i-avatar {
-    border: 1px solid #fff;
+    border: 1px solid #ccc;
 }
 
 #indexContent{
@@ -696,7 +696,7 @@ ul.ihome-nav a {
     margin: 60px auto 0;
     padding-left: 68px;
     padding-top: 64px;
-    width: 529px;
+    width: 550px;
 }
 #idcard img {
 	border: 2px solid #FFFFFF;
