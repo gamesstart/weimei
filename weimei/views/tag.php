@@ -7,15 +7,15 @@
 <?php 
 if($result->a)
 foreach ($result->a as $r){
-	echo "<li><a href='/avatar/one/$r->id' class='e-t'>$r->name</a><span>$r->username|$r->date ◆头</span></li>";
+	echo "<li><a href='/avatar/one/$r->id' class='e-t'>$r->name</a><a class='date-author' href='/avatar/one/$r->id'>$r->username|$r->date ◆头</a></li>";
 }
 if($result->p)
 foreach ($result->p as $r){
-	echo "<li><a href='/pic/one/$r->id' class='e-t'>$r->name</a><span>$r->username|$r->date ◆图</span></li>";
+	echo "<li><a href='/pic/one/$r->id' class='e-t'>$r->name</a><a class='date-author' href='/avatar/one/$r->id'>$r->username|$r->date ◆图</a></li>";
 }
 if($result->e)
 foreach ($result->e as $r){
-	echo "<li><a href='/article/view/$r->id' class='e-t'>$r->name</a><span>$r->username|$r->date ◆文</span></li>";
+	echo "<li><a href='/article/view/$r->id' class='e-t'>$r->name</a><a class='date-author' href='/avatar/one/$r->id'>$r->username|$r->date ◆文</a></li>";
 }
 ?>
 </div>
