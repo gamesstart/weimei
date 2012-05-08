@@ -79,6 +79,8 @@ $(function() {
 		Cookie.unset('userId','/','.'+getDomain());
 		Cookie.unset('username','/','.'+getDomain());
 		Cookie.unset('weimei','/','.'+getDomain());
+		/*常用变量置空*/
+		userId='';
 	});
 	
 	/* 添加tag */
@@ -114,7 +116,7 @@ $(function() {
 		var comment=$('#comment-area').val();
 		if(userId&&comment){
 			var id=(tid?tid:tid)?tid:tid;
-			$('#commets').append('<div class="commentsItem"><div class="commentsAvatar"><a><img  src="'+baseurl+'uploads/icon/'+userId+'_icon.jpg"></a></div><div class="reply-doc"> <div class="commentsMsg">'+username+'</div> <p class="commentsContent">'+comment+'</p></div></div>');
+			$('#commets').append('<div class="commentsItem"><div class="commentsAvatar"><a><img style="width:45px;" src="'+icon+'"></a></div><div class="reply-doc"> <div class="commentsMsg">'+username+'</div> <p class="commentsContent">'+comment+'</p></div></div>');
 			$.ajax({
 				type:'post',
 				url:siteurl+'/comment/add_comment',
@@ -209,6 +211,8 @@ $(function() {
 	//});
 	/*like*/
 	$('#like').click(function(){
+		console.log(userId);
+		if(userId){
 		   $.ajax({
 			   type : 'POST',
 			   url : '/like',
@@ -218,7 +222,10 @@ $(function() {
 				   likeCount.text(parseInt(likeCount.text())+parseInt(msg));
 			   }
 		   });
-		   return false;
+		}else{
+			alert('对不起，只有登录才能点击喜欢 : )');
+		}
+		return false;
 	});
 	
 	
