@@ -38,7 +38,7 @@
 |
 */
 
-$route['pic/(:num)-(.*)'] = "pic/one/$1";
+$route['pic/(:num)(.*)'] = "pic/one/$1";
 $route['pic/page-(.*)'] = "pic/page/$1";
 $route['article/(:num)-(.*)'] = "article/view/$1";
 $route['article/page-(.*)'] = "article/page/$1";
