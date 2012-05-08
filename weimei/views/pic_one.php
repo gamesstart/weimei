@@ -5,13 +5,12 @@
 <div id="inner-main">
 <div id="left">
 <h1 pid='<?=$id?>'><?=$name?></h1>
-<a id='like'></a>
-</br>
 <div class="height1"></div>
 <p id="picOne">
 <a  href="<?=$src?>"><img src="<?=$src?>" /></a>
 </p>
 <div class="br"></div>
+<div id="likes"><a href="#" id="like"></a><a href="#" class="like-tip">喜欢</a><a href="#" class="like-count"><?=$likeCount?></a><div class="br"></div></div>
 <div id="commets">
 <?php foreach ($comment as $c){?>
 <div class="commentsItem">
@@ -60,7 +59,7 @@
 	<?php 
 	
 		foreach ($userPic as $pic){
-			echo "<a href='/pic/$pic->id-".url_replace($pic->name)."'><img src='".miniPic($pic->src)."'/></a>";
+			echo "<a href='/pic/$pic->id".url_replace($pic->name)."'><img src='".miniPic($pic->src)."'/></a>";
 		}
 	?>
 	</div>

@@ -11,10 +11,10 @@ $this->load->view ( 'header' );
 <?php foreach ($imgs as $img) { ?>
 <div class="avatarBox">
 <div class="avatarInnerBox">
-<a href="/avatar/<?=$img->albumId.'-'.$img->name?>"><img src="<?=$img->src;?>"></a>
+<a href="/avatar/<?=$img->albumId.url_replace($img->name)?>"><img src="<?=$img->src;?>"></a>
 </div>
 <div class="avatarDesc">
-<a href="/avatar/<?=$img->albumId.'-'.$img->name?>"><?=$img->name;?></a>
+<a href="/avatar/<?=$img->albumId.url_replace($img->name)?>"><?=$img->name;?></a>
 <span>作者:<a href="/user/i/<?=$img->userId?>"><?=$img->username?></a></span>
 <span><?=$img->date?>创建</span></div>
 </div>
