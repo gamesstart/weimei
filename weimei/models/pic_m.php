@@ -31,7 +31,7 @@ class Pic_m extends CI_Model {
 		return $result;
 	}
 	function pic_one($id) {
-		$this->db->select ( 'pic.name title,src,pic.id id,username,user.id userId,date,icon' );
+		$this->db->select ( 'pic.name title,src,pic.id id,likeCount,username,user.id userId,date,icon' );
 		$this->db->from ( 'pic' );
 		$this->db->where('pic.id',$id)->join('user','user.id=userId');
 		$query = $this->db->get ();

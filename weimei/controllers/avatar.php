@@ -10,6 +10,7 @@ class Avatar extends CI_Controller {
 		$this->page(0);
 	}
 	function page($page) {
+		$this->load->helper('self_define_helper');
 		$this->output->cache(3);
 		//page为页，class为分类
 		//$page = $this->uri->segment( 4, 0 );
@@ -48,6 +49,9 @@ class Avatar extends CI_Controller {
 		$data['comment']= $this->Comment_m->get_comment ( 'a' .$data ['id']);
 		$data ['title'] = $data ['imgs'] [0]->name.'头像';
 		$data['keywords']=$data['title'];
+		//获取喜欢用户
+		$this->load->Model ( 'Like_m' );
+		$data['likeUser']=$this->Like_m->like_user("a$id");
 		foreach ($data['tag'] as $tag){
 			$data['keywords'].=','.$tag->name;
 		}

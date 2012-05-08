@@ -30,7 +30,7 @@ class Avatar_m extends CI_Model {
 		return $result;
 	}
 	function pic_one($albumId) {
-		$this->db->select ( 'name,albumId,src,username,user.id userId,date,icon' );
+		$this->db->select ( 'name,albumId,likeCount,src,username,user.id userId,date,icon' );
 		$this->db->from ( 'avatar' );
 		$this->db->where('albumId',$albumId)->join ( 'avatar_album', "avatar_album.id = avatar.albumId" )->join('user','user.id=avatar_album.userId');
 		$query = $this->db->get ();

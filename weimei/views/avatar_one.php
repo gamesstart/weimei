@@ -4,14 +4,21 @@
 <div id="inner-main">
 <div id="left">
 <h1> <?=$imgs[0]->name?> </h1>
-<a id='like'></a>
 <div class="height1"></div>
 <ul id="avatarShowAll">
 <?php foreach ($imgs as $img){?>
 <li><img src="<?=$img->src?>" alt="<?=$img->name?>" /></li>
 <?php }?>	
 </ul>
-<div class='br'></div>
+<div class="br"></div>
+<div id="likes"><a href="#" id="like"></a><a href="#" class="like-tip">喜欢</a><a href="#" class="like-count"><?=$imgs[0]->likeCount?></a><div class="br"></div></div>
+<h2 class='h2-t'>这些人也喜欢······</h2>
+<div id="like-user">
+<?php foreach ($likeUser as $l){?>
+<a href=/user/i/<?=$l->id?> title="<?=$l->name?>"><img src="<?=$l->icon?>"></a>
+<?php }?>
+</div>
+<h2 class='h2-t'>回应······</h2>
 <div id="commets">
 <?php foreach ($comment as $c){?>
 <div class="commentsItem">
@@ -25,7 +32,6 @@
  <?php }?> 
 </div>
 <a name='reply'></a>
-<h2 class='h2-t'>回应······</h2>
 <div id="liftComment"><textarea id="comment-area" name="comment"
 	class="textarea" ></textarea> <input type="button"
 	class="red-btn" id="comment-submit" value="评论"></div>

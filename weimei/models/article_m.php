@@ -27,7 +27,7 @@ class Article_m extends CI_Model {
 		return $result;
 	}
 	function view($id){
-		$this->db->select ( 'name title,article.id,content,user.id userId,icon,user.username,date' );
+		$this->db->select ( 'name title,article.id,content,user.id userId,icon,user.username,date,likeCount' );
 		$this->db->from ( 'article' )->where('article.id',$id);
 		$this->db->join ( 'user', 'user.id=article.userId' );
 		$query = $this->db->get ();

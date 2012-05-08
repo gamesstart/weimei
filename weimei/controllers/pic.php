@@ -39,15 +39,15 @@ class Pic extends CI_Controller {
 		$this->load->view ( 'pic_list', $data );
 	}
 	//显示单张图片
-	function one($picid) {
+	function one($id) {
 		$this->output->cache(10);
 		//$picid = $this->uri->segment ( 3, 0 );
 		$this->load->Model ( 'Pic_m' );
-		$data = $this->Pic_m->pic_one ( $picid );
+		$data = $this->Pic_m->pic_one ( $id );
 		$data->userPic=$this->Pic_m->user_pic($data->userId);
 		//获取tags
 		$this->load->Model ( 'Tag_m' );
-		$data->tag = $this->Tag_m->get_tag ( 'p' . $picid, '' );
+		$data->tag = $this->Tag_m->get_tag ( 'p' . $id, '' );
 		//keywords
 		$data->keywords=$data->title;
 		foreach ($data->tag as $tag){
@@ -56,9 +56,12 @@ class Pic extends CI_Controller {
 		$data->name=$data->title;
 		$data->title=$data->title?$data->title:$data->id;
 		$data->title.='图片';
+		//获取喜欢用户
+		$this->load->Model ( 'Like_m' );
+		$data->likeUser=$this->Like_m->like_user("p$id");
 		//获取评论
 		$this->load->Model ( 'Comment_m' );
-		$data->comment = $this->Comment_m->get_comment ( 'p' . $picid );
+		$data->comment = $this->Comment_m->get_comment ( 'p' . $id );
 		//load js
 		$this->load->helper ( 'self_define_helper' );
 		$data->js = js ( array ('jquery.fancybox-1.3.4' ) );

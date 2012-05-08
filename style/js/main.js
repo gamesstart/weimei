@@ -208,6 +208,18 @@ $(function() {
 		//$(this).attr('disable','disabled');
 	//});
 	/*like*/
+	$('#like').click(function(){
+		   $.ajax({
+			   type : 'POST',
+			   url : '/like',
+			   data :'id='+tid,
+			   success : function(msg) {
+				   var likeCount=$(".like-count");
+				   likeCount.text(parseInt(likeCount.text())+parseInt(msg));
+			   }
+		   });
+		   return false;
+	});
 	
 	
 		
@@ -227,7 +239,7 @@ $(function() {
 		
 	});
 	/*pic list wallfall*/
-	var $container = $('#pic');
+	var $container = $('#index-pic,#pic');
 
 	$container.imagesLoaded( function(){
 	  $container.masonry({
