@@ -98,7 +98,7 @@ img {
     color: #4B4A4A;
     font-size: 18px;
     font-weight: lighter;
-    margin: 5px 0;
+    margin: 15px 0 10px;
 }
 h3 {
     color: #3781BC;
@@ -376,25 +376,22 @@ input[type="text"] {
 }
 #pic,#avatar,#article,#tag{
 	float:right;
-}
-#avatar,#article{
 	width:750px;
+    overflow: hidden;
 }
 #picOne{
    text-align: center;
 }
 #picOne img{
    box-shadow: 1px 1px 10px #7D7D7D;
-   max-width:580px;
-　　width:expression(　
-　　　function(img){　
-　　　　img.onload=function(){　
-　　　　　this.style.width=’’;　
-　　　　　this.style.width=(this.width>580)?"580px":this.width+"px"　
-　　　　};　
-　　　　return’580px’　//加载时显示宽度为120px　
-　　　}(this)　
-　　);　
+   max-width:480px;
+   width:expression(　
+　function(img){　
+　	img.onload=function(){　
+　	this.style.width=(this.width>480)?"480px":this.width+"px"　
+　	};　
+　}(this)　
+　);　
 }
 .picbox{
     border: 1px solid #FFFFFF;
@@ -436,7 +433,7 @@ input[type="text"] {
     width: 240px;
     _width: 240px;
 }
-.avatarInnerBox {
+.avatarInnerBox{
 	border: 1px solid #E6E6E6;
 	float: left;
 	height: 100px;
@@ -577,12 +574,13 @@ input[type="text"] {
 #tag{
 	width:750px;
 }
-#tag li {
+#tag li{
     border-bottom: 1px dashed #CCCCCC;
     list-style: none outside none;
     padding: 5px 0;
 }
-#tag span {
+#tag .date-author{
+    color: #000000;
     float: right;
 }
 /*文字*/
@@ -643,10 +641,44 @@ input[type="text"] {
 	width:100%;
 	height:500px;
 }
+/*like*/
+#likes {
+    margin: 15px 0 0;
+    text-align: center;
+}
+#like {
+    background: url("/style/images/inpost-action-buttons.png") no-repeat scroll -23px 0 transparent;
+    display: block;
+    height: 25px;
+    margin: 0 auto;
+    width: 27px;
+}
+.like-tip {
+    color: #808080;
+    float: left;
+    margin-left: 225px;
+    width: 25px;
+	_line-height:19px;
+}
+.like-count {
+    background: url("/style/images/picc-cnt-baloon.png") repeat scroll 0 0 transparent;
+    color: #808080;
+    display: block;
+    float: left;
+    height: 16px;
+    line-height: 16px;
+    width: 33px;
+}
+#like-user{
+	
+}
+#like-user img{
+	width:35px;
+}
 /*comment*/
 .commentsItem {
     height: auto;
-    padding: 13px 0 23px 0;
+    padding: 5px 0 25px;
 }
 .reply-doc {
 	margin-left: 70px;
@@ -654,7 +686,7 @@ input[type="text"] {
 .commentsAvatar {
 	float: left;
 	width: 48px;
-   border: 2px solid #FFFFFF;
+	border: 1px solid #ccc;
 }
 
 .commentsMsg {
