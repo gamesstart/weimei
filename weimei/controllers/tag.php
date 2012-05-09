@@ -29,6 +29,7 @@ class Tag extends CI_Controller {
 			$this->load->Model('Tag_m');
 			$data->result=$this->Tag_m->get_tag('',$tag);
 			$this->load->helper('url');
+			$this->load->helper('self_define_helper');
 			$this->load->view('tag',$data);
 	}
 	function get_tag(){
