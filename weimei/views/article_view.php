@@ -59,6 +59,8 @@
 	</div>
 	<!--tags end -->
 </div>
+	<div class="br"></div>
+</div>
 </div>
 <?php
 $this->load->view ( 'footer' );
