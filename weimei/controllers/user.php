@@ -50,6 +50,8 @@ class User extends CI_Controller {
 	}
 	function login() {
 		$data ['title'] = '登录';
+		$data['referer']=$this->input->get('referer');
+		$data['referer']=$data['referer']?$data['referer']:$_SERVER['HTTP_REFERER'];
 		if ($_POST) {
 			$email = $this->input->post ( 'email' );
 			$password = $this->input->post ( 'password' );
@@ -81,7 +83,7 @@ class User extends CI_Controller {
                		'path'   => '/'
                );
                $this->input->set_cookie($cookie);
-				Header ( "Location:" . site_url ( 'user/set' ) );
+				Header ( "Location:" .$data['referer']);
 			} else {
 				$data ['error'] = '错误：用户名或密码不正确。';
 				$this->load->view ( 'user_login', $data );

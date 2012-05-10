@@ -28,7 +28,7 @@ text-align: center;
 </style>
 <script type="text/javascript">
 function JumpUrl(){
-location='<?=$url?>';
+location='<?=$url?>?referer=<?=$_SERVER['HTTP_REFERER']?>';
 }
 setTimeout('JumpUrl()',1000);
 </script>

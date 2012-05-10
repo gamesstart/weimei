@@ -6,7 +6,7 @@ $this->load->view('header');
 	<h1>用户登陆</h1>
 	<div class="content">
 	<div style="border: 0px solid black;" class="article">
-		<form action="login" method="POST" name="loginForm" id="loginForm">
+		<form action="login?referer=<?=$referer?>" method="POST" name="loginForm" id="loginForm">
 			<div class="error">
 					<label>&nbsp;</label>
 					<span id="error"><?php echo isset($error)?$error:'';?></span>
