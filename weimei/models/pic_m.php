@@ -22,6 +22,9 @@ class Pic_m extends CI_Model {
 		} */
 		return $picId; 
 	}
+	function collect($src,$name,$userId){
+		$this->db->insert ( 'pic', array ('src' => $src,'name'=>$name,'userId'=>$userId,'date'=>date('Y-m-d H:i:s')));
+	}
 	function page_list($page, $count) {
 		//->limit($count)
 		$this->db->select ('pic.name,src,pic.id id,username,userId,date' );

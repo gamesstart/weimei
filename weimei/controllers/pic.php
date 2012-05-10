@@ -11,6 +11,7 @@ class Pic extends CI_Controller {
 		$this->page(0);
 	}
 	function page($page){
+		
 		$this->output->cache(3);
 		$this->load->helper ( 'self_define_helper' );
 		//获取url第三个参数值，默认为0
@@ -211,8 +212,92 @@ class Pic extends CI_Controller {
 		}
 	}
 	//js bookmarket上传
-	function js_pic_init(){
-		
+	function collect(){
+		$this->load->Model ( 'User_m' );
+		if($this->User_m->is_login (0)){
+			$data['src']=$this->input->get('src');
+			$data['location']=$this->input->get('location');
+			$data['name']=$this->input->get('name');
+			$this->load->view('collect',$data);
+		}else{
+			$this->load->view('collect_login',$data);
+		}
+	}
+	function collect_do(){
+		$src=$this->input->post('src');
+		$location=$this->input->post('location');
+		$name=$this->input->post('name');
+		$this->load->helper ('self_define_helper' );
+		//文件地址
+		$folder = $this->config->item ( 'upload_folder' );
+		$foldername = $this->config->item ( 'upload_folder_name' );
+		$uploadpath = $folder . '/' . $foldername;
+		$fileext='.'.getExt($src);
+		$filename=$uploadpath.'/'.time () . '_' . rand ( 0, 1000 ).$fileext;
+		//new folder
+		if (! is_dir ( $uploadpath )) {
+			mkdir ( $uploadpath, 0755 );
+		}
+		//下载文件
+		if(download_file($src, $filename)){
+			//生成缩略图
+			$data['full_path']=$filename;
+			$data['file_ext']=$fileext;
+			$config ['image_library'] = 'gd2';
+			$config ['source_image'] = $data ['full_path'];
+			$config ['new_image'] = $data ['full_path'] . '.min' . $data ['file_ext'];
+			$config ['master_dim'] = 'width';
+			//$config ['maintain_ratio'] = 'false';
+			$config ['width'] = 270;
+			$config ['height'] = 200;
+			$this->load->library ( 'image_lib', $config );
+			if (! $this->image_lib->resize()) {
+				echo $this->image_lib->display_errors ();
+			}
+			unset ( $config );
+			$config ['image_library'] = 'gd2';
+			$config ['source_image'] = $data ['full_path'];
+			$config ['new_image'] = $data ['full_path'] . '.mini' . $data ['file_ext'];
+			$config ['master_dim'] = 'auto';
+			$config ['width'] = 270;
+			$config ['height'] = 200;
+			$this->image_lib->initialize ( $config );
+			if (! $this->image_lib->resize()) {
+				echo $this->image_lib->display_errors ();
+			}
+			$this->image_lib->clear ();
+			$config ['width'] = 270;
+			$config ['height'] = 200;
+			$config ['master_dim'] = 'width';
+			$config ['overwrite'] = TRUE;
+			$config ['maintain_ratio'] = FALSE;
+			$config ['image_library'] = 'gd2';
+			$config ['source_image'] = $data ['full_path'] . '.mini' . $data ['file_ext'];
+			$config ['new_image'] = $data ['full_path'] . '.mini' . $data ['file_ext'];
+			$this->image_lib->initialize ( $config );
+			if (! $this->image_lib->crop ()) {
+				echo $this->image_lib->display_errors ();
+			}
+			//生成缩略图,想resize再crop，
+			unset ( $config );
+			$this->image_lib->clear ();
+			$config ['image_library'] = 'gd2';
+			$config ['source_image'] = $data ['full_path'].'.mini' . $data ['file_ext'];
+			$config ['new_image'] = $data ['full_path'] . '.mini' . $data ['file_ext'];
+			$config ['master_dim'] = 'auto';
+			$config ['width'] = 120;
+			$config ['height'] = 89;
+			$this->image_lib->initialize ( $config );
+			$this->image_lib->resize ();
+				
+			$this->load->Model ( 'Pic_m' );
+			//留作以后添加单独标题用
+			$this->load->library('session');
+			$userId=$this->session->userdata('userId');
+			$this->Pic_m->collect('/'.$filename,$name,$userId);
+		}
+		$data['msg']='收藏成功，窗口正在关闭。';
+		$this->load->view('close',$data);
 	}
 }
 	
