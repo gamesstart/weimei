@@ -89,6 +89,22 @@ function url_replace($target){
 	return preg_replace('/-+/','-',$res);
 	}
 }
+/*文件下载*/
+function download_file($url,$filename){
+	// 创建一个新cURL资源
+	$ch = curl_init();
+	curl_setopt($ch,CURLOPT_TIMEOUT,0);
+	curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+	// 设置URL和相应的选项
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_HEADER, false);
+	// 抓取URL并把它传递给浏览器
+	$data=curl_exec($ch);
+	file_put_contents($filename, $data);
+	//关闭cURL资源，并且释放系统资源
+	curl_close($ch);
+	return true;
+}
 
 
 
