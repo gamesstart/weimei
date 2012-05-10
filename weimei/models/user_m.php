@@ -42,7 +42,7 @@ class  User_m extends CI_Model{
 			return $this->db->affected_rows();
 		}
 		//CI不能在不同的控制器之间调用只能将这种公共函数写到模型中了，－ －
-		function is_login(){
+		function is_login($is_redirect=1){
 			$this->load->library('session');
 			$id=$this->session->userdata('userId');
 			$password=$this->session->userdata('password');
@@ -50,9 +50,11 @@ class  User_m extends CI_Model{
 		    if(!count($query->row())){
 		    		//redirect('user/login','refresh');
 		    	//显示成功信息并跳转
-		    	$data=array('msg'=>'请先登录再进行相应的操作！',
-		    			'url'=>site_url ( 'user/login' ));
-		    	$this->load->view('redirect',$data);
+		    	if($is_redirect){
+			    	$data=array('msg'=>'请先登录再进行相应的操作！',
+			    			'url'=>site_url ( 'user/login' ));
+			    	$this->load->view('redirect',$data);
+		    	}
 		    	return false;
 		    }else{
 		    	return true;
