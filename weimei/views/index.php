@@ -12,8 +12,8 @@
 <?php foreach ( $imgs as $img ) { ?>
 <div class="picbox">
 <div class="imgInnerBox">
-<div class="img"><a href="/pic/<?=$img->id.url_replace($img->name)?>"><img src="<?=getMiniPic($img->src)?>"></a></div>
-<div class="imgDesc"><a  class='album-name' href="/pic/<?=$img->id.url_replace($img->name)?>"><?=$img->name?></a></br>
+<div class="img"><a href="/pic/<?=$img->id?>"><img src="<?=getMiniPic($img->src)?>"></a></div>
+<div class="imgDesc"><a  class='album-name' href="/pic/<?=$img->id?>"><?=$img->name?></a></br>
 <span><a href="<?=$img->username?>"><?=$img->username?></a>于<?=getTime(strtotime($img->date))?></span></div>
 </div>
 </div>
@@ -63,10 +63,8 @@
 			<div class="br"></div>
 			<div id="link">
 			<h2 class="h2-t">酷站推荐······</h2>
-			<li><a target="_blank" href="http://www.qwbus.com/">趣味巴士网</a></li> 
-			<li><a target="_blank" href="http://www.moxiaolu.com/">爱Cool设计</a></li> 
-			<li><a target="_blank" href="http://www.2weimei.com/">爱唯美小站</a></li> 
-			<li><a target="_blank" href="http://www.wmeim.com">唯美美</a></li> 
+			<li><a target="_blank" href="http://www.2weimei.com">爱唯美小站</a></li> 
+			<li><a target="_blank" href="http://www.newborner.com">明星宝贝网</a></li> 
 			</div>
 			<div class="br"></div>
 		</div>

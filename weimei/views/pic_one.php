@@ -64,7 +64,7 @@
 	<?php 
 	
 		foreach ($userPic as $pic){
-			echo "<a href='/pic/$pic->id".url_replace($pic->name)."'><img src='".miniPic($pic->src)."'/></a>";
+			echo "<a href='/pic/$pic->id'><img src='".miniPic($pic->src)."'/></a>";
 		}
 	?>
 	</div>

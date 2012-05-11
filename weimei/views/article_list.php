@@ -6,7 +6,7 @@
 <div id="article">
 <?php foreach ($articles as $a){?>
 <li><img src="<?=miniPic($a->nail)?>" style="width: 110px; height: 82px;">
-<a class="e-t" href="/article/<?=$a->id.url_replace($a->name)?>"><?=$a->name?></a>
+<a class="e-t" href="/article/<?=$a->id?>"><?=$a->name?></a>
 <span><?=$a->username?>|<?=$a->date?></span>
 <p><?=$a->description?>...</p>
 </li>
