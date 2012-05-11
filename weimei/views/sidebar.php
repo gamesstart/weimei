@@ -9,9 +9,6 @@
  		<li><a href="/pic/">美图</a> </li>
 		<li><a href="/avatar/">头像</a> </li>
 		<li><a href="/article/">文字</a> </li>
-		<li><a href="#">Most Recent</a> </li>
-		<li><a href="#">Most Popular</a> </li>
-		<li><a href="#">Most Recent</a> </li>
 	</ul>
 </div>
 <div id="sidebar-widget-stream" class="sidebar-widget">
@@ -28,13 +25,13 @@
 	</div>
 </div>
 <div class="sidebar-widget">
-	<h3>时间</h3>
+	<h3>最多喜欢</h3>
 	<ul>
-		<li class=""> <a href="#" >今天</a> </li>
-		<li class=""> <a href="#" >本周</a> </li>
-		<li class=""> <a href="#" >本月</a> </li>
-		<li class=""> <a href="#" >本年</a> </li>
-		<li class=""> <a href="#" >全部时间</a> </li>
+		<li class=""> <a href="/pic/?order=today" >今天</a> </li>
+		<li class=""> <a href="/pic/?order=weekend" >本周</a> </li>
+		<li class=""> <a href="/pic/?order=month" >本月</a> </li>
+		<li class=""> <a href="/pic/?order=year" >本年</a> </li>
+		<li class=""> <a href="/pic/?order=all" >全部时间</a> </li>
 	</ul>
 </div>
 </div>

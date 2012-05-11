@@ -10,8 +10,8 @@ class Pic extends CI_Controller {
 		//重定向到第一页
 		$this->page(0);
 	}
-	function page($page){
-		
+	function page($page=0){
+		$order=$this->input->get('order');
 		$this->output->cache(3);
 		$this->load->helper ( 'self_define_helper' );
 		//获取url第三个参数值，默认为0
@@ -19,7 +19,7 @@ class Pic extends CI_Controller {
 		//每页20张图片
 		$count = 20;
 		$this->load->Model ( 'Pic_m' );
-		$d= $this->Pic_m->page_list ( $page, $count );
+		$d= $this->Pic_m->page_list ( $page, $count,$order);
 		$data ['imgs']=$d['imgs'];
 		//$this->load->Model('Pic_m');
 		//$pics=$this->Pic_m->page_list($page,$count);
@@ -36,6 +36,8 @@ class Pic extends CI_Controller {
 		//初始化分页
 		$this->pagination->initialize ( $config );
 		$data['page_list_link']=str_replace('page/', 'page-',$this->pagination->create_links ());
+		if($order)
+		$data['page_list_link']=preg_replace('/href="(.*?)"/',"href='$1?order=$order'", $data['page_list_link']);
 		$data['title']='美图'.$page.'页';
 		$this->load->view ( 'pic_list', $data );
 	}

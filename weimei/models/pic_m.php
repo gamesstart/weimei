@@ -25,12 +25,23 @@ class Pic_m extends CI_Model {
 	function collect($src,$name,$userId){
 		$this->db->insert ( 'pic', array ('src' => $src,'name'=>$name,'userId'=>$userId,'date'=>date('Y-m-d H:i:s')));
 	}
-	function page_list($page, $count) {
+	function page_list($page, $count,$order){
 		//->limit($count)
 		$this->db->select ('pic.name,src,pic.id id,username,userId,date' );
+		if(!$order){
 		$query=$this->db->order_by ( "id", "desc" )->join('user','user.id=pic.userId')->get ( 'pic', $count, $count * $page );
-		$result['imgs']=$query->result ();
 		$result['count']=$this->db->count_all_results('pic');
+		$result['imgs']=$query->result ();
+		}elseif($order=='all'){
+			$query=$this->db->order_by ( "likeCount", "desc" )->join('user','user.id=pic.userId')->get ( 'pic', $count, $count * $page );
+			$result['imgs']=$query->result ();
+			$result['count']=$this->db->count_all_results('pic');
+		}else{
+			$orderDay=array('today'=>1,'weekend'=>7,'month'=>30,'year'=>356);
+			$query=$this->db->order_by ( "likeCount", "desc" )->where('pic.date>curdate( )-'.$orderDay["$order"])->join('user','user.id=pic.userId')->get ( 'pic', $count, $count * $page );
+			$result['imgs']=$query->result ();
+			$result['count']=$this->db->query('SELECT COUNT(*) AS `count`  FROM `pic` WHERE pic.date>curdate( )-'.$orderDay["$order"])->row()->count;
+		}
 		return $result;
 	}
 	function pic_one($id) {

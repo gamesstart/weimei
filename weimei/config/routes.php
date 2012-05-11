@@ -41,8 +41,8 @@
 $route['pic/(:num)'] = "pic/one/$1";
 $route['pic/page-(.*)'] = "pic/page/$1";
 $route['article/(:num)'] = "article/view/$1";
-$route['article/page-(.*)'] = "article/page/$1";
-$route['avatar/page-(.*)'] = "avatar/page/$1";
+$route['article/page-(:num)'] = "article/page/$1";
+$route['avatar/page-(:num)'] = "avatar/page/$1";
 $route['avatar/(:num)'] = "avatar/one/$1";
 $route['default_controller'] = "index";
 $route['404_override'] = '';
