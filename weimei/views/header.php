@@ -2,7 +2,7 @@
 <HTML xmlns="http://www.w3.org/1999/xhtml">
 	<HEAD>
 		<META content="text/html; charset=utf-8" http-equiv=Content-Type>
-		<title><?=$title?></title>
+		<title><?=$title?>-唯美小站</title>
 		<meta name="author" content="h2ero" />
 		<meta name="keywords" content="<?=$keywords?>" />
 		<meta name="description" content="<?=isset($description)?$description:''?>" />
