@@ -405,19 +405,18 @@ input[type="text"] {
 	width:240px;
 }
 .picbox:hover .imgDesc{
-    background:rgba(0, 0, 0, 0.8);
-    height: 50px;
-    margin-top: -55px;
-    padding: 5px 0 0 10px;
-    position: relative;
 	display:block;
 }
 .imgDesc{
 	display:none;
+    background:rgba(0, 0, 0, 0.8);
+    height: 40px;
+    margin-top: -45px;
+    padding: 5px 0 0 10px;
+    position: relative;
 }
 .picbox .imgDesc .album-name{
 	color: #FFFFFF;
-    font-size: 20px;
 }
 .picbox .imgDesc span{
 	color:#cccccc;
@@ -590,6 +589,9 @@ input[type="text"] {
     list-style: none outside none;
     padding: 20px 0;
 }
+#article li:hover {
+	background: #F5F5F5;
+}
 #article li .e-t {
     color: #336699;
     display: block;
@@ -626,16 +628,14 @@ input[type="text"] {
 #left pre img{
 	display:block;
 	margin:15px auto;
-	max-width:535px;
-	　　width:expression(　
-	　　　function(img){　
-	　　　　img.onload=function(){　
-	　　　　　this.style.width=’’;　
-	　　　　　this.style.width=(this.width>535)?"535px":this.width+"px"　
-	　　　　};　
-	　　　　return’535px’　//加载时显示宽度为120px　
-	　　　}(this)　
-	　　);　
+	max-width:480px;
+	width:expression(　
+	　function(img){　
+	　	img.onload=function(){　
+	　	this.style.width=(this.width>480)?"480px":this.width+"px"　
+	　	};　
+	　}(this)　
+	　);　
 }
 #e-add-content{
 	width:100%;

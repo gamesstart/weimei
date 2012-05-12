@@ -19,7 +19,7 @@ script.onload=function(){
 							}else{
 								img.wrap("a");
 							}
-								img.after('<a class="C-a-wm" style="margin-left:-125px;position:absolute;z-index:222222;" href="http://weimei.com/pic/collect/?src='+src+'&name='+name+'"><img style="border:none;" src="http://localhost/demo/collect.png"/></a>');}
+								img.after('<a class="C-a-wm" style="margin-left:-125px;position:absolute;z-index:222222;" href="http://weimei.de/pic/collect/?src='+src+'&name='+name+'"><img style="border:none;" src="http://weimei.de/style/images/collect.png"/></a>');}
 					});
 					$('.C-a-wm').hover(function(){
 						this.style.cursor = 'pointer';

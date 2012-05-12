@@ -39,7 +39,8 @@
 */
 
 $route['pic/(:num)'] = "pic/one/$1";
-$route['pic/page-(.*)'] = "pic/page/$1";
+$route['pic/page-(:num)?order=(.*)'] = "pic/page/$1/$2";
+$route['pic/page-(:num)'] = "pic/page/$1";
 $route['article/(:num)'] = "article/view/$1";
 $route['article/page-(:num)'] = "article/page/$1";
 $route['avatar/page-(:num)'] = "avatar/page/$1";

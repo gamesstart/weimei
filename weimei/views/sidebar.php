@@ -11,7 +11,7 @@
 		<li><a href="/article/">文字</a> </li>
 	</ul>
 </div>
-<div id="sidebar-widget-stream" class="sidebar-widget">
+<!--<div id="sidebar-widget-stream" class="sidebar-widget">
 	<h3>分类(<span id="sidebar-widget-stream-count-follow">1</span>)</h3>
 	<div id="streams-container">
 	    <ul class="streams">
@@ -23,7 +23,7 @@
 	     </ul>
 	    <a id="view-all-streams" href="#" >View All</a>
 	</div>
-</div>
+</div>-->
 <div class="sidebar-widget">
 	<h3>最多喜欢</h3>
 	<ul>

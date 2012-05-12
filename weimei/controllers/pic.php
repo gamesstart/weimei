@@ -11,6 +11,10 @@ class Pic extends CI_Controller {
 		$this->page(0);
 	}
 	function page($page=0){
+		$uri = $this->config->item('base_url').
+		$this->config->item('index_page').
+		$this->uri->uri_string();
+		echo $uri;
 		$order=$this->input->get('order');
 		$this->output->cache(3);
 		$this->load->helper ( 'self_define_helper' );
