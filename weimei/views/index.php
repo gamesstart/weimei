@@ -8,15 +8,17 @@
 		<meta name="description" content="<?=isset($description)?$description:''?>" />
 		<link rel="shortcut icon" href="favicon.ico"/>
 		<!-- Date: 2011-10-23 -->
-		<link href="/style/css/style.css" rel="stylesheet" />
+		<link rel="stylesheet/less" href="/style/css/style.less">
+		<link rel=stylesheet type=text/css href='/style/css/base.css'>
 		<link rel=stylesheet type=text/css href='/style/css/fancybox/jquery.fancybox-1.3.4.css'>
-		<script src='/style/js/jquery.min.js'></script>
+		<script src='/style/js/jquery-1.7.2.min.js'></script>
+		<script src='/style/js/less-1.3.0.min.js'></script>
+		<script src='/style/js/main.js'></script>
 		<script src='/style/js/jquery.fancybox-1.3.4.js'></script>
-		<script src='/style/js/jquery.masonry.min.js'></script>
 		<?php
 		echo $css.$js;
 		 ?>
-		<script src='/style/js/main.js'></script>
+		<script src='/style/js/simpleStyle.js'></script>
 		<script type="text/javascript">
 		var baseurl='<?=base_url()?>';
 		var siteurl='<?=site_url()?>';
@@ -24,93 +26,51 @@
 		var target='<?=$target?>';
 		</script>
 	</head>
-	<body>
+<body>
+	<div id="container">
 		<div id="header">
-			<div id="inner-header">
-				<div id="logo">
-					<a href="<?=base_url()?>"><img src="/style/images/logo.png"/></a>
-				</div>
-				<div id="user-msg">
-					<a class="login" href="/user/login/"><span>登录</span></a>
-					<a class="join" href="/user/reg/"><span>加入</span></a>
-				</div>
-				<div class="search">
-			      <img src="/style/images/icon-search.gif">	
-				    <input type="text" title="Search" value="Search" id="search" name="q">
-				</div><!--END SEARCH-->
+			<a href="#"> <img id="logo" src="/style/images/logo.png" />
+			</a>
+			<div id="menu">
+				<a href="">首页</a>| <a href="" id="m-popular">热门</a>| <a href=""
+					class="m-popular">今日</a><a href="" class="m-popular">本周</a><a
+					href="" class="m-popular">本月</a><a href="" class="m-popular">今年</a><a
+					href="" class="m-popular">全部</a><a href="" id="m-tag">Tag</a>| <a
+					href="">用户</a>| <a href="">关于</a>
 			</div>
+			<div id="user-msg"></div>
 		</div>
-		<!---header end--->
+		<!--header-->
 
-		<div class="br"></div>
-<!-- header -->
 		<div id="main">
-			<?php $this->load->view('sidebar'); ?>			
-			<div id="inner-main">
-				<div id="left">
-					<div class="height1"></div>
-					<div id="class-bar">
-						<span>公告:唯美小站~刚刚上线，大家多多支持哦哦，争做最好的图片分享网站，完善中:)</span>
+			<div id="pic">
+				
+<?php $imgss=array_chunk($imgs,7); foreach ( $imgss as $imgs ) { ?>
+				<div class="pic-list">
+				<?php foreach($imgs as $img){ ?>
+					<div class="pic-item">
+						<div class="pic-desc">
+							<h2><?=$img->name?></h2>
+							<span>加入于<?=getTime(strtotime($img->date))?></span><a href="<?=$img->username?>"><?=$img->username?></a>
+						</div>
+						<a href="/pic/<?=$img->id?>"><img src="<?=getMiniPic($img->src)?>"></a>
 					</div>
-					<div class="br"></div>
-					<div id="index-pic">
-<?php foreach ( $imgs as $img ) { ?>
-<div class="picbox">
-<div class="imgInnerBox">
-<div class="img"><a href="/pic/<?=$img->id?>"><img src="<?=getMiniPic($img->src)?>"></a></div>
-<div class="imgDesc"><a  class='album-name' href="/pic/<?=$img->id?>"><?=$img->name?></a></br>
-<span><a href="<?=$img->username?>"><?=$img->username?></a>于<?=getTime(strtotime($img->date))?></span></div>
-</div>
-</div>
+				<?php } ?>
+				</div>
 <?php } ?>
-</div>
-<div class="br"></div>
-<ul id="pagelist">
-					<?=$page_list_link?>
-						</ul>
-				</div>
-				<!---left end--->
-				<div id="right">
-				<div id="weimei-say">
-				<h3>唯美小站(WeiMei.de)</h3>
-				<p>
-				如果一切美好分为美好和不美好的话，那我希望美好停止于不美好，不美好也停止于美好。
-				</p>
-				</div>
-				<div id='i-tag'>
-				<h3>热门Tag....</h3>
-				<p>
-					<?php
-					foreach ( $tags as $tag) {
-						echo "<a href='/tag/$tag->name'>" . $tag->name. '</a>';
-					}
-					?>
-				</p>
-				</div>
-				<div class='br'><</div>
-				<div id="latest-user">
-					<h3>最近加入...</h3>
-					<div id="latest-user-avatar">
-					<?php foreach ($users as $user){?>
-					<a href="/user/i/<?=$user->id?>"><img src="<?=getMiniPic($user->icon)?>" alt="" /></a>
-					<?php }?>
-					</div>
-				<div id="latest-comments">
-				<h3>最新评论...</h3>
-				<?php foreach ($comments as $comment){?>
-				<div class="l-c-item"><a href="/u/<?=$comment->userId?>/pic/" class="l-c-i-avatar"><img alt="" src="<?=getMiniPic($comment->icon)?>" style="width: 48px; height: 48px;"></a> <span><a href="#"><?=$comment->username?></a>在<?=getTime(strtotime($comment->date))?>说:</span> <p><?=$comment->content?></p> </div>
-				<?php }?>
-				</div>
-				</div>
-				</div>
-				<!---right end--->
+					
+				<div class="fn-clear"></div>
 			</div>
-			<div class="br"></div>
-			<div id="link">
+			<!--pic-->
+			<div id="pagelist">
+									<?=$page_list_link?>
+			</div>
+			<div class="fn-clear"></div>
+		</div>
+		<!--main-->
+		<div id="link">
 			<h2 class="h2-t">酷站推荐······</h2>
-			<li><a target="_blank" href="http://www.2weimei.com">爱唯美小站</a></li> 
-			<li><a target="_blank" href="http://www.newborner.com">明星宝贝网</a></li> 
-			</div>
-			<div class="br"></div>
+			<li><a target="_blank" href="http://www.2weimei.com">爱唯美小站</a></li>
+			<li><a target="_blank" href="http://www.newborner.com">明星宝贝网</a></li>
 		</div>
 <?php $this->load->view('footer'); ?>

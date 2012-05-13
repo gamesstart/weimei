@@ -16,7 +16,7 @@ class Index extends CI_Controller{
 		);
 		$this->load->Model('Index_m');
 		$data['users']=$this->Index_m->get_latest_user();
-		$data['comments']=$this->Index_m->get_latest_comment(10);
+		$data['comments']=$this->Index_m->get_latest_comment(21);
 		$data['avatars']=$this->Index_m->avatar();
 		$data['articles']=$this->Index_m->article();
 		$data['tags']=$this->Index_m->tag();
@@ -24,7 +24,7 @@ class Index extends CI_Controller{
 		//获取url第三个参数值，默认为0
 		$page = $this->uri->segment ( 3, 0 );
 		//每页10张图片
-		$count = 10;
+		$count = 21;
 		$this->load->Model ( 'Pic_m' );
 		$d= $this->Pic_m->page_list ( $page, $count );
 		$data ['imgs']=$d['imgs'];
@@ -33,7 +33,7 @@ class Index extends CI_Controller{
 		//分页
 		$this->load->library ( 'pagination' );
 		$config ['base_url'] = site_url ( 'pic/page' );
-		$config ['total_rows'] = $d['count']/10;
+		$config ['total_rows'] = $d['count']/$count;
 		$config ['per_page'] = '1';
 		$config ['num_links'] = 5;
 		$config ['cur_tag_open'] = '<span class=current>';

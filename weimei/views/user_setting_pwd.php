@@ -2,15 +2,16 @@
 $this->load->view('header');
 ?>
 <div id="main">
-	<div id="inner-main">
-	<h1>帐号设置</h1>
-	<div class="content">
-<ul class="ihome-nav">
-		<li><a href="/user/set">个人资料</a></li>
+<div id="class-bar">
+<span>帐号设置 · · · · · ·</span>
+<ul class='u-class'>
+<li><a href="/user/set">个人资料</a></li>
 		<li><a href="/user/set_icon">修改头像</a></li>
 		<li class="current">修改密码</li>
-		</ul>
-		<div class="clear1"></div>
+</ul>
+ </div>
+ <!-- class bar -->
+	<div class="content">
 		<form action="/user/set_pwd" id="frm_sub" method="post">
 			<table border="0" class="frm-tbl">
 				<tbody><tr>
@@ -37,10 +38,6 @@ $this->load->view('header');
 				</tbody></table>
 			</form>
 </div>
-	<div class="sidebar">
-		<h2></h2>
-	</div>
-	</div>
 </div>
 <?php
 $this->load->view('footer');

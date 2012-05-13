@@ -2,21 +2,23 @@
 <HTML xmlns="http://www.w3.org/1999/xhtml">
 	<HEAD>
 		<META content="text/html; charset=utf-8" http-equiv=Content-Type>
-		<title><?=$title?>-唯美小站</title>
+		<title><?=$title?>-唯美小站WeiMei.De</title>
 		<meta name="author" content="h2ero" />
 		<meta name="keywords" content="<?=$keywords?>" />
 		<meta name="description" content="<?=isset($description)?$description:''?>" />
 		<link rel="shortcut icon" href="favicon.ico"/>
 		<!-- Date: 2011-10-23 -->
-		<link href="/style/css/style.css" rel="stylesheet" />
+		<link rel="stylesheet/less" href="/style/css/style.less">
+		<link rel=stylesheet type=text/css href='/style/css/base.css'>
 		<link rel=stylesheet type=text/css href='/style/css/fancybox/jquery.fancybox-1.3.4.css'>
-		<script src='/style/js/jquery.min.js'></script>
+		<script src='/style/js/jquery-1.7.2.min.js'></script>
+		<script src='/style/js/less-1.3.0.min.js'></script>
+		<script src='/style/js/main.js'></script>
 		<script src='/style/js/jquery.fancybox-1.3.4.js'></script>
-		<script src='/style/js/jquery.masonry.min.js'></script>
 		<?php
 		echo $css.$js;
 		 ?>
-		<script src='/style/js/main.js'></script>
+		<script src='/style/js/simpleStyle.js'></script>
 		<script type="text/javascript">
 		var baseurl='<?=base_url()?>';
 		var siteurl='<?=site_url()?>';
@@ -25,21 +27,18 @@
 		</script>
 	</head>
 	<body>
+		<div id="container">
 		<div id="header">
-			<div id="inner-header">
-				<div id="logo">
-					<a href="<?=base_url()?>"><img src="/style/images/logo.png"/></a>
-				</div>
-				<div id="user-msg">
-					<a class="login" href="/user/login/"><span>登录</span></a>
-					<a class="join" href="/user/reg/"><span>加入</span></a>
-				</div>
-				<div class="search">
-			      <img src="/style/images/icon-search.gif">	
-				    <input type="text" title="Search" value="Search" id="search" name="q">
-				</div><!--END SEARCH-->
+			<a href="/">
+				<img id="logo" src="/style/images/logo.png"/>
+			</a>
+			<div id="menu">
+					<a href="/">首页</a>|
+					<a href="" id="m-popular">热门</a>|
+					<a href="" class="m-popular">今日</a><a href="" class="m-popular">本周</a><a href="" class="m-popular">本月</a><a href="" class="m-popular">今年</a><a href="" class="m-popular">全部</a><a href="" id="m-tag">Tag</a>|
+					<a href="">用户</a>|
+					<a href="">关于</a>
 			</div>
-		</div>
-		<!---header end--->
-
-		<div class="br"></div>
+			<div id="user-msg"></div>
+		</div>	
+		<!--header-->

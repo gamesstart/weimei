@@ -1,25 +1,28 @@
 <?php $this->load->view ( 'header' ); ?>
-<div id="main">
-<?php $this->load->view('sidebar'); ?>			
-<div id="inner-main">
-<div id="class-bar">分类 · · · · · ·</span> <span id="create"><a href="<?=site_url ( 'pic/upload' )?>">发布照片</a></span></div>
-<div id="pic">
-<?php foreach ( $imgs as $img ) { ?>
-<div class="picbox">
-<div class="imgInnerBox">
-<div class="img"><a href="/pic/<?=$img->id?>"><img src="<?=getMiniPic($img->src)?>"></a></div>
-<div class="imgDesc"><a  class='album-name' href="/pic/one/<?=$img->id?>"><?=$img->name?></a></br>
-<span><a href="<?=$img->username?>"><?=$img->username?></a>于<?=getTime(strtotime($img->date))?></span></div>
-</div>
-</div>
+		<div id="main">
+			<div id="pic">
+				
+<?php $imgss=array_chunk($imgs,7); foreach ( $imgss as $imgs ) { ?>
+				<div class="pic-list">
+				<?php foreach($imgs as $img){ ?>
+					<div class="pic-item">
+						<div class="pic-desc">
+							<h2><?=$img->name?></h2>
+							<span>加入于<?=getTime(strtotime($img->date))?></span><a href="<?=$img->username?>"><?=$img->username?></a>
+						</div>
+						<a href="/pic/<?=$img->id?>"><img src="<?=getMiniPic($img->src)?>"></a>
+					</div>
+				<?php } ?>
+				</div>
 <?php } ?>
-</div>
-<div class="br"></div>
-<ul id="pagelist">
-					<?=$page_list_link?>
-						</ul>
-<!---pic end--->
-</div>
-<div class="br"></div>
-</div>
+					
+				<div class="fn-clear"></div>
+			</div>
+			<!--pic-->
+			<div id="pagelist">
+									<?=$page_list_link?>
+			</div>
+				<div class="fn-clear"></div>
+		</div>
+		<!--main-->
 <?php $this->load->view ( 'footer' ); ?>

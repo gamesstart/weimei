@@ -2,14 +2,17 @@
 $this->load->view('header');
 ?>
 <div id="main">
-	<div id="inner-main">
-	<h1>帐号设置</h1>
-	<div class="content">
-		<ul class="ihome-nav">
+<div id="class-bar">
+<span>帐号设置 · · · · · ·</span>
+<ul class='u-class'>
 		<li><a href="/user/set">个人资料</a></li>
 		<li class="current">修改头像</li>
 		<li><a href="/user/set_pwd">修改密码</a></li>
-		</ul>
+</ul>
+ </div>
+ <!-- class bar -->
+	<div class="content">
+
 		<table>
 			<tbody>
 			<tr><span id="error" style="color:red"><?php echo isset($error)?$error:'';?></span></tr>
@@ -59,7 +62,6 @@ $this->load->view('header');
 			</td>
 			</tr>
 			</tbody></table>
-</div>
 </div>
 </div>
 <?php

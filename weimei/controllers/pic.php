@@ -14,14 +14,14 @@ class Pic extends CI_Controller {
 		$uri = $this->config->item('base_url').
 		$this->config->item('index_page').
 		$this->uri->uri_string();
-		echo $uri;
+		//echo $uri;
 		$order=$this->input->get('order');
 		$this->output->cache(3);
 		$this->load->helper ( 'self_define_helper' );
 		//获取url第三个参数值，默认为0
 		//$page = $this->uri->segment ( 3, 0 );
 		//每页20张图片
-		$count = 20;
+		$count = 21;
 		$this->load->Model ( 'Pic_m' );
 		$d= $this->Pic_m->page_list ( $page, $count,$order);
 		$data ['imgs']=$d['imgs'];

@@ -1,6 +1,5 @@
 <?php $this->load->view ( 'header' ); ?>
 <div id="main">
-<?php $this->load->view('sidebar'); ?>			
 <div id="inner-main">
 <div id="left">
 <h1> <?=$imgs[0]->name?> </h1>

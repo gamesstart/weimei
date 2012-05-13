@@ -70,9 +70,10 @@ $(function() {
 	}
 	
 	if(userId){
-		$('#user-msg').hide();
-		$('#sidebar-widget-profile').html('<img src="'+icon+'"><ul class="main"><li class="profile-info"><a href="/user/i/'+userId+'">h2ero</a></li><li class="profile-info"> <a href="/user/set/">设置</a> </li><li class="profile-info"> <a href="/user/login_out">退出</a></li></ul><div class="br"></div>');
-	}else{
+		$('#user-msg').html("你好,<a href='"+siteurl+"/user/i/"+userId+"'>"+username+"</a>&nbsp;&nbsp;<a class='link1' href='"+siteurl+"/user/set'>设置</a> <a class='link1' id='loginout' href='"+siteurl+"/user/login_out'>退出</a> ");
+
+		}else{
+		$('#user-msg').html("你好，请 <a class='link1' href='"+siteurl+"/user/login'>登录</a> 或者 <a class='link1' href='"+siteurl+"/user/reg'>注册</a>，<a class='link3' href='"+siteurl+"/user/lost_pwd'>忘记密码？</a>");
 	}
 	/*退出清除cookie*/
 	$('#loginout').live('click',function(){
@@ -134,16 +135,8 @@ $(function() {
 		});
 	
 	/*添加回复*/
-	$(".commentsItem").hover(function(){
-		//$('.commentsContent',$(this))
-		$(this).append('<a class="reply" href="#reply" style="float:right;margin-top:8px;">回复</a>');
-	},
-	function(){
-		$('.reply',$(this)).remove();
-	}
-	);
 	$(".reply").live('click',function(){
-		var name=$('.commentsMsg a',$(this).parent()).text();
+		var name=$('a:first',$(this).parent()).text();
 		$('#comment-area').val('@'+name+' ').focus();
 		return false;
 	});
@@ -245,15 +238,7 @@ $(function() {
 		}
 		
 	});
-	/*pic list wallfall*/
-	var $container = $('#index-pic,#pic');
 
-	$container.imagesLoaded( function(){
-	  $container.masonry({
-	    itemSelector : '.picbox',
-	    isFitWidth: true 
-	  });
-	});
 
 
 
