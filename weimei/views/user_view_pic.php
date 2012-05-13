@@ -14,22 +14,30 @@
 <li><a href='#'>专辑</a></li>
 </ul>
  </div>
-<div id="pic">
-<?php foreach ( $imgs as $img ) { ?>
-<div class="picbox">
-<div class="imgInnerBox">
-<div class="img"><a href="<?=site_url ( '/pic/one/' . $img->id )?>"><img src="<?=getMiniPic($img->src)?>"></a></div>
-<div class="imgDesc"><a  class='album-name' href="<?=site_url ( '/pic/one/' . $img->id )?>"><?=$img->name?></a></br>
-<span>发表于<?=getTime(strtotime($img->date))?></span></div>
-</div>
-</div>
+			<div id="pic">
+				
+<?php $imgss=array_chunk($imgs,7); foreach ( $imgss as $imgs ) { ?>
+				<div class="pic-list">
+				<?php foreach($imgs as $img){ ?>
+					<div class="pic-item">
+						<div class="pic-desc">
+							<h2><?=$img->name?></h2>
+							<span>加入于<?=getTime(strtotime($img->date))?></span><a href="<?=$img->username?>"><?=$img->username?></a>
+						</div>
+						<a href="/pic/<?=$img->id?>"><img src="<?=getMiniPic($img->src)?>"></a>
+					</div>
+				<?php } ?>
+				</div>
 <?php } ?>
-</div>
-<div class="br"></div>
-<ul id="pagelist">
-					<?=$page_list_link?>
-						</ul>
-<!---pic end---></div>
+					
+				<div class="fn-clear"></div>
+			</div>
+			<!--pic-->
+<div id="pagelist">
+									<?=$page_list_link?>
+			</div>
+			<div class="fn-clear"></div>
+						</div>
 <!---left end--->
 <div id="right">
 	<div id="r-u-a" class="right-box">
@@ -40,7 +48,7 @@
 		<!-- right user msg end-->
 </div>
 <!---left end--->
-<div class="br"></div>
+<div class="fn-clear"></div>
 </div>
 <?php
 $this->load->view ( 'footer' );

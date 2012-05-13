@@ -39,7 +39,7 @@ class U extends CI_Controller {
 		//图片，专辑，文字，留言
 			$this->load->helper('self_define_helper');
 			//每页10张图片
-			$count = 10;
+			$count = 14;
 			$d=$this->User_m->get_user_pic($page,$count,$userId);
 			$data ['imgs']=$d['imgs'];
 			//$this->load->Model('Pic_m');
@@ -47,7 +47,7 @@ class U extends CI_Controller {
 			//分页
 			$this->load->library ( 'pagination' );
 			$config ['base_url'] ='./';
-			$config ['total_rows'] = $d['count']/10;
+			$config ['total_rows'] = $d['count']/$count;
 			$config ['per_page'] = '1';
 			$config ['num_links'] = 5;
 			$config ['cur_tag_open'] = '<span class=current>';

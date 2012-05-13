@@ -1,16 +1,15 @@
 <?php $this->load->view ( 'header' ); ?>
 <div id="main">
-<div id="inner-main">
 <div id="left">
-<h1> <?=$imgs[0]->name?> </h1>
+<h1 id="title"> <?=$imgs[0]->name?> </h1>
 <div class="height1"></div>
 <ul id="avatarShowAll">
 <?php foreach ($imgs as $img){?>
 <li><img src="<?=$img->src?>" alt="<?=$img->name?>" /></li>
 <?php }?>	
 </ul>
-<div class="br"></div>
-<div id="likes"><a href="#" id="like"></a><a href="#" class="like-tip">喜欢</a><a href="#" class="like-count"><?=$imgs[0]->likeCount?></a><div class="br"></div></div>
+<div class="fn-clear"></div>
+<div id="likes"><a href="#" id="like"></a><a href="#" class="like-tip">喜欢</a><a href="#" class="like-count"><?=$imgs[0]->likeCount?></a><div class="fn-clear"></div></div>
 <h2 class='h2-t'>这些人也喜欢······</h2>
 <div id="like-user">
 <?php foreach ($likeUser as $l){?>
@@ -21,11 +20,12 @@
 <div id="commets">
 <?php foreach ($comment as $c){?>
 <div class="commentsItem">
-<div class="commentsAvatar"><a href="/user/i/<?=$c->userId?>"><img src="<?=getMiniPic($c->icon)?>"></a>
-</div>
+<a class="commentsAvatar" href="/user/i/<?=$c->userId?>"><img src="<?=getMiniPic($c->icon)?>"></a>
 <div class="reply-doc">
-<div class="commentsMsg"><a href="/user/i/<?=$c->userId?>"><?=$c->username?></a>-----<?=$c->date?></div>
+<div class="commentsMsg"><a href="/user/i/<?=$c->userId?>"><?=$c->username?></a>于<?=getTime(strtotime($c->date));?>说|<a class="reply" href="#reply" >回复</a></div>
+<div class="cc-top"></div>
 <p class="commentsContent"><?=$c->content?></p>
+<div class="cc-bottom"></div>
 </div>
 </div>
  <?php }?> 
@@ -51,7 +51,7 @@
 		}
 		?>
 		</div>
-		<div class='br'></div>
+		<div class='fn-clear'></div>
 		<div class="labels-add"><span>添加标签有助于整理你的分享，多个标签请用逗号分隔</span>
 <br>
 <form method="post"><input type="text" name="tags" id="tags"><input type="button" id="tag-btn" class="red-btn" value="添加"> 
@@ -60,8 +60,7 @@
 	</div>
 	<!--tags end -->
 </div>
-<div class="br"></div>
-<!---innermain end---></div>
+<div class="fn-clear"></div>
 </div>
 <?php
 $this->load->view ( 'footer' );

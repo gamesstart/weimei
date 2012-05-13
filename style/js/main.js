@@ -70,10 +70,10 @@ $(function() {
 	}
 	
 	if(userId){
-		$('#user-msg').html("你好,<a href='"+siteurl+"/user/i/"+userId+"'>"+username+"</a>&nbsp;&nbsp;<a class='link1' href='"+siteurl+"/user/set'>设置</a> <a class='link1' id='loginout' href='"+siteurl+"/user/login_out'>退出</a> ");
+		$('#user-msg').html("你好,<a href='"+siteurl+"user/i/"+userId+"'>"+username+"</a>&nbsp;&nbsp;<a class='link1' href='"+siteurl+"user/set'>设置</a> <a class='link1' id='loginout' href='"+siteurl+"user/login_out'>退出</a> ");
 
 		}else{
-		$('#user-msg').html("你好，请 <a class='link1' href='"+siteurl+"/user/login'>登录</a> 或者 <a class='link1' href='"+siteurl+"/user/reg'>注册</a>，<a class='link3' href='"+siteurl+"/user/lost_pwd'>忘记密码？</a>");
+		$('#user-msg').html("你好，请 <a class='link1' href='"+siteurl+"user/login'>登录</a> 或者 <a class='link1' href='"+siteurl+"user/reg'>注册</a>，<a class='link3' href='"+siteurl+"user/lost_pwd'>忘记密码？</a>");
 	}
 	/*退出清除cookie*/
 	$('#loginout').live('click',function(){
@@ -117,7 +117,7 @@ $(function() {
 		var comment=$('#comment-area').val();
 		if(userId&&comment){
 			var id=(tid?tid:tid)?tid:tid;
-			$('#commets').append('<div class="commentsItem"><div class="commentsAvatar"><a><img style="width:45px;" src="'+icon+'"></a></div><div class="reply-doc"> <div class="commentsMsg">'+username+'</div> <p class="commentsContent">'+comment+'</p></div></div>');
+			$('#commets').append('<div class="commentsItem"><a href="/user/i/1" class="commentsAvatar"><img src="'+icon+'"></a><div class="reply-doc"><div class="commentsMsg"><a href="/user/i/1">'+username+'</a>于1 分钟前说|<a href="#reply" class="reply">回复</a></div><div class="cc-top"></div><p class="commentsContent">'+comment+'</p><div class="cc-bottom"></div></div></div>');
 			$.ajax({
 				type:'post',
 				url:siteurl+'/comment/add_comment',
@@ -143,7 +143,7 @@ $(function() {
 
 	/*头像预览*/
 	if($("#avatarShowAll img").length){
-	$('body').prepend('<div id="show"><img src=""></div>');
+	$('#avatarShowAll').prepend('<div id="show"><img src=""></div>');
 	$("#avatarShowAll img").mousemove(function(event){
 		$('#show img').attr('src',$(this).attr('src'));
 		var top = document.body.scrollTop || document.documentElement.scrollTop;

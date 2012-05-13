@@ -1,7 +1,7 @@
 <?php $this->load->view ( 'header' ); ?>
 <div id="main">
 <div id="left">
-<h1 pid='<?=$id?>'><?=$name?></h1>
+<h1 id="title"><?=$name?></h1>
 <div class="height1"></div>
 <p id="picOne">
 <a  href="<?=$src?>"><img src="<?=$src?>" /></a>

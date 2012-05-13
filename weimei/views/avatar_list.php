@@ -2,8 +2,6 @@
 $this->load->view ( 'header' );
 ?>
 <div id="main">
-<?php $this->load->view('sidebar'); ?>	
-<div id="inner-main">
 <div id="class-bar"><span>分类 · · · · · ·</span>
 <span id="create"><a href="/avatar/upload">发布照片</a></span></div>
 
@@ -21,9 +19,8 @@ $this->load->view ( 'header' );
 <?php } ?>
 </div>
 
-<div class="br"></div>
+<div class="fn-clear"></div>
 <ul id="pagelist"><?=$page_list_link?></ul>
-<!---inner-mian end---></div>
 </div>
 <?php $this->load->view ( 'footer' );
 ?>
