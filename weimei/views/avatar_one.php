@@ -3,12 +3,12 @@
 <div id="left">
 <h1 id="title"> <?=$imgs[0]->name?> </h1>
 <div class="height1"></div>
-<ul id="avatarShowAll">
+<div id="avatarShowAll">
 <?php foreach ($imgs as $img){?>
 <li><img src="<?=$img->src?>" alt="<?=$img->name?>" /></li>
 <?php }?>	
-</ul>
 <div class="fn-clear"></div>
+</div>
 <div id="likes"><a href="#" id="like"></a><a href="#" class="like-tip">喜欢</a><a href="#" class="like-count"><?=$imgs[0]->likeCount?></a><div class="fn-clear"></div></div>
 <h2 class='h2-t'>这些人也喜欢······</h2>
 <div id="like-user">

@@ -18,9 +18,7 @@
 <?php } ?>
 </div>
 <div class="br"></div>
-<ul id="pagelist">
-					<?=$page_list_link?>
-						</ul>
+<ul id="pagelist"> <?=$page_list_link?> </ul>
 <!---pic end---></div>
 <!---left end--->
 <div id="right"></div>

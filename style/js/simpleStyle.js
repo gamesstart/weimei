@@ -8,7 +8,7 @@ $(function(){
 	});
 	//
 	//底部图片对齐
-	$('.pic-list').css('height',pHeight-40+'px');
+	$('.pic-list').css('height',pHeight-15+'px');
 	//图片信息提示
 	$('.pic-item').hover(function(){
 		$('.pic-desc',this).show();

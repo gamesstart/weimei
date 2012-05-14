@@ -204,7 +204,6 @@ $(function() {
 	//});
 	/*like*/
 	$('#like').click(function(){
-		console.log(userId);
 		if(userId){
 		   $.ajax({
 			   type : 'POST',

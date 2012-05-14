@@ -17,6 +17,7 @@ $this->load->view ( 'header' );
 <span><?=$img->date?>创建</span></div>
 </div>
 <?php } ?>
+<div class="fn-clear"></div>
 </div>
 
 <div class="fn-clear"></div>

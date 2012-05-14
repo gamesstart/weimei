@@ -1,5 +1,6 @@
 <?php $this->load->view ( 'header' ); ?>
 <div id="main">
+<div id="left">
 <div id="class-bar"><span>分类 · · · · · ·</span> <span id="create"><a href="<?=site_url('article/add')?>">发布文章</a></span></div>
 <div id="article">
 <?php foreach ($articles as $a){?>
@@ -9,9 +10,12 @@
 <p><?=$a->description?>...</p>
 </li>
 <?php }?>
+<div class="fn-clear"></div>
 </div>
-<div class="br"></div>
 <ul id="pagelist"> <?=$page_list_link?> </ul>
 <!---pic end--->
+</div>
+<div id="right"></div>
+<div class="fn-clear"></div>
 </div>
 <?php $this->load->view ( 'footer' ); ?>

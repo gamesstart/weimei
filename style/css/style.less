@@ -5,6 +5,9 @@ body{
 a{
     color: #FF4F73;
     text-decoration: none;
+  &:hover{
+    text-decoration: none;
+  }
 }
 h1{
   font-size:18px;
@@ -165,9 +168,9 @@ h1{
       /*pic*/
      
      #avatar{
-       
      }
      #avatarShowAll{
+       display:block;
         li {
           border: 0 solid black;
           box-shadow: 1px 1px 4px #747474;
@@ -235,9 +238,43 @@ h1{
       line-height: 20px;
     }
      /*avatar*/
+    /*article*/
+   /*文字*/
+    #article{
+      li {
+        border-bottom: 1px dashed #CCCCCC;
+        height: 85px;
+        list-style: none outside none;
+        padding:5px 0px 30px 0px;
+        .e-t {
+          color: #336699;
+          display: block;
+          font-size: 15px;
+        &:hover {
+          color: #FC6B96;
+          background:none;
+          }
+        }
+         p {
+          float: left;
+          width: 450px;
+         }
+         span {
+          color: #999999;
+          display: block;
+          float: left;
+          margin: 5px 0;
+         }
+         img {
+          float: left;
+          margin: 0 10px;
+         }
+        }
+      }
      #pagelist{
        float:left;
        margin:10px 0px;
+       width:600px;
        a{
          margin-left: 10px;
          color:#125EFF;
@@ -257,12 +294,16 @@ h1{
      }
      #about{
        float:right;
+       a{
+         margin:0px 5px;
+       }
      }
    }
     /*footer*/
 }
 /*公共组件功能*/
 #likes {
+    width: 600px;
     margin: 15px 0 0;
     text-align: center;
 }
@@ -394,19 +435,19 @@ h1{
 }
 #tag-btn{
   float:right;
-    margin-top: 7px;
+  margin-top: 7px;
 }
 #labels-list span, #labels-list a, #i-tag a {
   float:left;
   white-space: nowrap;
-    background: none repeat scroll 0 0 #FF5F83;
-    border-bottom: 2px solid #C9C9C9;
-    border-right: 2px solid #C9C9C9;
-    color: #FFFFFF;
-    margin-right: 5px;
-    margin-top: 5px;
-    padding: 2px 5px;
-    height: 17px;
+  background: none repeat scroll 0 0 #FF5F83;
+  border-bottom: 2px solid #C9C9C9;
+  border-right: 2px solid #C9C9C9;
+  color: #FFFFFF;
+  margin-right: 5px;
+  margin-top: 5px;
+  padding: 2px 5px;
+  height: 17px;
   line-height:17px;
 }
 /*right 公共*/
@@ -454,5 +495,4 @@ h1{
       float:left;
     }
   }
-  
 }
