@@ -16,15 +16,21 @@
 </div>
 <h2 class='h2-t'>回应······</h2>
 <div id="commets">
-<?php foreach ($comment as $c){?>
-<div class="commentsItem">
+<?php foreach ($comment as $key=>$c){?>
+
+<div class="commentsItem<?if($key%2){echo '-r';}?>">
+<?php if($key%2==0){ ?>
 <a class="commentsAvatar" href="/user/i/<?=$c->userId?>"><img src="<?=getMiniPic($c->icon)?>"></a>
+<?php }?>
 <div class="reply-doc">
 <div class="commentsMsg"><a href="/user/i/<?=$c->userId?>"><?=$c->username?></a>于<?=getTime(strtotime($c->date));?>说|<a class="reply" href="#reply" >回复</a></div>
 <div class="cc-top"></div>
-<p class="commentsContent"><?=$c->content?></p>
+<div class="commentsContent"><p><?=$c->content?></p></div>
 <div class="cc-bottom"></div>
 </div>
+<?php if($key%2){ ?>
+<a class="commentsAvatar" href="/user/i/<?=$c->userId?>"><img src="<?=getMiniPic($c->icon)?>"></a>
+<?php }?>
 </div>
  <?php }?> 
 </div>
@@ -37,7 +43,7 @@
 <div id="right">
 	<div id="r-u-a" class="right-box">
 	<h2 class='h2-t'>WHO...?</h2>
-	<a href="<?=site_url("/user/i/".$userId)?>"><img src="<?=getMiniPic($icon)?>"></a><span><a href="<?=site_url("./user/i/".$userId)?>"><?=$username?></a><fn-clear>加入于<?=$date?></span>
+	<a href="/user/i/<?=$userId?>"><img src="<?=getMiniPic($icon)?>"></a><span><a href="/user/i/<?=$userId?>"><?=$username?></a><fn-clear>加入于<?=$date?></span>
 	</div>
 		<!-- right user msg end-->
 	<div id="labels" class="right-box">
@@ -45,7 +51,7 @@
 			<div id="labels-list">
 			<?php
 			foreach ( $tag as $tag) {
-				echo "<a href='".site_url('/tag/'.$tag->name)."'>" . $tag->name. '</a>';
+				echo "<a href='/tag/$tag->name'>" . $tag->name. '</a>';
 			}
 			?>
 			</div>

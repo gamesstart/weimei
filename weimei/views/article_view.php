@@ -42,7 +42,7 @@
 <div id="right">
 	<div id="r-u-a" class="right-box">
 	<h2 class='h2-t'>WHO...?</h2>
-	<a href="<?=site_url("/user/i/".$userId)?>"><img src="<?=getMiniPic($icon)?>"></a><span><a href="<?=site_url("./user/i/".$userId)?>"><?=$username?></a><fn-clear>加入于<?=$date?></span>
+	<a href="/user/i/<?=$userId?>"><img src="<?=getMiniPic($icon)?>"></a><span><a href="/user/i/<?=$userId?>"><?=$username?></a><fn-clear>加入于<?=$date?></span>
 	</div>
 		<!-- right user msg end-->
 	<div id="labels" class="right-box">
@@ -50,7 +50,7 @@
 			<div id="labels-list">
 			<?php
 			foreach ( $tag as $tag) {
-				echo "<a href='".site_url('/tag/'.$tag->name)."'>" . $tag->name. '</a>';
+				echo "<a href='/tag/$tag->name'>" . $tag->name. '</a>';
 			}
 			?>
 			</div>

@@ -51,7 +51,7 @@
 					<div class="pic-item">
 						<div class="pic-desc">
 							<h2><?=$img->name?></h2>
-							<span>加入于<?=getTime(strtotime($img->date))?></span><a href="<?=$img->username?>"><?=$img->username?></a>
+							<span>加入于<?=getTime(strtotime($img->date))?></span><a href="/user/i/<?=$img->userId?>"><?=$img->username?></a>
 						</div>
 						<a href="/pic/<?=$img->id?>"><img src="<?=getMiniPic($img->src)?>"></a>
 					</div>
