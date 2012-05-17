@@ -27,7 +27,7 @@ class Pic_m extends CI_Model {
 	}
 	function page_list($page, $count,$order){
 		//->limit($count)
-		$this->db->select ('pic.name,src,pic.id id,username,userId,date' );
+		$this->db->select ('pic.name,src,height,pic.id id,username,userId,date' );
 		if(!$order){
 		$query=$this->db->order_by ( "id", "desc" )->join('user','user.id=pic.userId')->get ( 'pic', $count, $count * $page );
 		$result['count']=$this->db->count_all_results('pic');
@@ -68,5 +68,10 @@ class Pic_m extends CI_Model {
 		//检验该文档是否属于该用户
 		$this->db->where ( 'id', $pid)->update ( 'pic',array('name'=>$name));
 	}
-
+	function get_pic_src($start,$end){
+		return $this->db->query("select src,id from pic where $start<=id and id<=$end")->result();
+	}
+	function update_height($id,$height){
+		$this->db->query("update pic set height=$height where id=$id");
+	}
 }

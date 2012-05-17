@@ -13,12 +13,12 @@
 		<link rel=stylesheet type=text/css href='/style/css/fancybox/jquery.fancybox-1.3.4.css'>
 		<script src='/style/js/jquery-1.7.2.min.js'></script>
 		<script src='/style/js/less-1.3.0.min.js'></script>
+		<script src='/style/js/simpleStyle.js'></script>
 		<script src='/style/js/main.js'></script>
 		<script src='/style/js/jquery.fancybox-1.3.4.js'></script>
 		<?php
 		echo $css.$js;
 		 ?>
-		<script src='/style/js/simpleStyle.js'></script>
 		<script type="text/javascript">
 		var baseurl='<?=base_url()?>';
 		var siteurl='<?=site_url()?>';
@@ -43,10 +43,9 @@
 		<!--header-->
 
 		<div id="main">
-			<div id="pic">
-				
-<?php $imgss=array_chunk($imgs,7); foreach ( $imgss as $imgs ) { ?>
-				<div class="pic-list">
+			<div id="pic" >
+<?php $imgss=sort3Array($imgs); foreach ( $imgss[0] as $key=>$imgs ) { ?>
+				<div class="pic-list" data-h='<?php echo $imgss[0][$key][0]->height-$imgss[1][$key][0]; ?>' >
 				<?php foreach($imgs as $img){ ?>
 					<div class="pic-item">
 						<div class="pic-desc">

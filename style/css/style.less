@@ -131,6 +131,7 @@ h1{
           .pic-item{
              box-shadow: 2px 2px 5px #000000;
              margin: 10px 0;
+             overflow:hidden;
              .pic-desc{
                 filter: ~"Alpha(opacity=80)";
                 background: none repeat scroll 0 0 #000;
@@ -338,9 +339,12 @@ h1{
 	width:35px;
 }
 /*like*/
+#liftComment{
+   margin-top: 30px;
+}
 .commentsItem {
     height: auto;
-    padding: 5px 0 25px;
+    padding: 5px 0 10px;
 .reply-doc {
   margin-left: 38px;
 }
@@ -386,6 +390,8 @@ h1{
 }
 }
 .commentsItem-r{
+    height: auto;
+    padding: 5px 0 10px;
 .reply-doc {
     margin-left: 60px;
 }
@@ -401,18 +407,20 @@ h1{
     height: 10px;
 }
 .commentsAvatar {
-	border: 1px solid #CCCCCC;
+	  border: 1px solid #CCCCCC;
     float: right;
     margin-top: -25px;
+    position: relative;
+    z-index: 3;
 }
 .commentsAvatar img{
   width: 35px;
   height:35px;
 }
 .commentsContent {
-    background: none repeat scroll 0 0 #EAFFEA;
-    border-left: 1px solid #96FC96;
-    border-right: 1px solid #96FC96;
+    background: none repeat scroll 0 0 #F5F5F5;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
     margin-bottom: -10px;
     margin-left: 2px;
     margin-top: -2px;

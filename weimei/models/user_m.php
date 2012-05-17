@@ -30,7 +30,7 @@ class  User_m extends CI_Model{
 		   return $query->row();
 		}
 		function get_user_pic($page,$count,$userId){
-			$this->db->select ('name,src,id,date' );
+			$this->db->select ('name,src,height,id,date' );
 			$query=$this->db->order_by ( "id", "desc" )->where('userId',$userId)->get ( 'pic', $count, $count * $page );
 			$result['imgs']=$query->result ();
 			$result['count']=$this->db->where('userId',$userId)->count_all_results('pic');

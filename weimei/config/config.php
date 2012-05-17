@@ -372,7 +372,7 @@ $config['proxy_ips'] ='';
  */
 $config['upload_folder']='uploads';
 $config['upload_folder_name']=date('Ymd');
-$config['root']=str_replace('\\','/',substr(dirname(__FILE__),0,-15)).'/';
+$config['root']=str_replace('/weimei/config','',dirname(__FILE__));
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

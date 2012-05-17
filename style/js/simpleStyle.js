@@ -1,14 +1,8 @@
 $(function(){
-	var pHeight=0;
+	//图片对齐
 	$('.pic-list').each(function(){
-		if(!pHeight)
-			pHeight=$(this)[0].clientHeight;
-		if(pHeight>$(this)[0].clientHeight)
-			pHeight=$(this)[0].clientHeight;
+		$('.pic-item:first',$(this)).css('height',$(this).attr('data-h'));
 	});
-	//
-	//底部图片对齐
-	$('.pic-list').css('height',pHeight-15+'px');
 	//图片信息提示
 	$('.pic-item').hover(function(){
 		$('.pic-desc',this).show();

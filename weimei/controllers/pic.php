@@ -305,8 +305,16 @@ class Pic extends CI_Controller {
 		$data['msg']='收藏成功，窗口正在关闭。';
 		$this->load->view('close',$data);
 	}
+	function check_pic(){
+		$start=$this->input->get('start');
+		$end=$this->input->get('end');
+		$this->load->Model ( 'Pic_m' );
+		$d= $this->Pic_m->get_pic_src($start,$end);
+		$root=$this->config->item('root');
+		$this->load->helper('self_define_helper');
+		foreach($d as $key=>$value){
+			$res=getimagesize($root.getMiniPic($value->src));
+			$this->Pic_m->update_height($value->id,$res[1]);
+		}
+	}
 }
-	
-
-
-

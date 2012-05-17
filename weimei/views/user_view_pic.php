@@ -16,8 +16,8 @@
  </div>
 			<div id="pic">
 				
-<?php $imgss=array_chunk($imgs,7); foreach ( $imgss as $imgs ) { ?>
-				<div class="pic-list">
+<?php $imgss=sort2Array($imgs); foreach ( $imgss[0] as $key=>$imgs ) { ?>
+				<div class="pic-list" data-h='<?php echo $imgss[0][$key][0]->height-$imgss[1][$key][0]; ?>' >
 				<?php foreach($imgs as $img){ ?>
 					<div class="pic-item">
 						<div class="pic-desc">

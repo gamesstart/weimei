@@ -32,7 +32,8 @@
 				this.set(name, "", new Date(0), path, domain, secure);
 			}
 		}
-	
+	/*cookie*/
+
 	/*登录信息*/
 	var userId=Cookie.get('userId');
 	var username=Cookie.get('username');
@@ -45,6 +46,7 @@
 $(function() {
 	//常用变量
 	var tid=$('#tid').val();
+
     /*slider*/
 	if($('#slider').length){
 	$('#slider').nivoSlider();
@@ -161,10 +163,10 @@ $(function() {
 			title.text('未命名');
 			t=title.text();
 		}
-		if($('#r-u-a span a').text()==$('#sidebar-widget-profile a:first').text()&&userId)
+		if($('#r-u-a span a').text()==$('#user-msg a:first').text()&&userId)
 			$('#r-u-a').append("<div class='edit'><a href='#' class='red-btn'>修改标题</a></div>");
 		$('#r-u-a .edit').click(function(){
-			title.html("<input type='text' id='change-title' name='title'/><input class='red-btn'  type='button' id='rename-btn'  value='确认修改'/><input id='cancel-change' class='red-btn'  type='button' value='取消'/>");
+			title.html("<input type='text' id='change-title' name='title' class='input-r'/><input class='red-btn'  type='button' id='rename-btn'  value='确认修改'/><input id='cancel-change' class='red-btn'  type='button' value='取消'/>");
 		});
 		//提交修改后的标题
 		$('#rename-btn').live('click',function(){
@@ -175,7 +177,7 @@ $(function() {
 			   $.ajax({
 				   type : 'POST',
 				   url : siteurl+'/pic/rename',
-				   data : 'id='+$('h1').attr('pid')+'&name='+$('#change-title').val(),
+				   data : 'id='+tid.replace('p','')+'&name='+$('#change-title').val(),
 				   success : function(msg) {
 					   title.text($('#change-title').val());
 				   }
