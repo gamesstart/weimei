@@ -162,7 +162,7 @@ class Pic extends CI_Controller {
 			unset ( $config );
 			$config ['image_library'] = 'gd2';
 			$config ['source_image'] = $data ['full_path'];
-			$config ['new_image'] = $data ['full_path'] . '.min' . $data ['file_ext'];
+			$newimg=$config ['new_image'] = $data ['full_path'] . '.min' . $data ['file_ext'];
 			$config ['master_dim'] = 'width';
 			//$config ['maintain_ratio'] = 'false';
 			$config ['width'] = 270;
@@ -212,9 +212,12 @@ class Pic extends CI_Controller {
 			$this->load->Model ( 'Pic_m' );
 			//留作以后添加单独标题用
 			$userId=$this->input->post('userId');
-			$avatarId = $this->Pic_m->upload($src,$albumId,$userId);
+			//获取新图片高度
+			$res=getimagesize($newimg);
+			$height=$res[1];
+			$avatarId = $this->Pic_m->upload($src,$albumId,$userId,$height);
 			//返回相关信息
-			echo $data['client_name'].'@../' . $miniSrc . '@' . $avatarId;
+			echo $data['client_name']."-$height".'@../' . $miniSrc . '@' . $avatarId;
 		}
 	}
 	//js bookmarket上传
@@ -251,7 +254,7 @@ class Pic extends CI_Controller {
 			$data['file_ext']=$fileext;
 			$config ['image_library'] = 'gd2';
 			$config ['source_image'] = $data ['full_path'];
-			$config ['new_image'] = $data ['full_path'] . '.min' . $data ['file_ext'];
+			$newimg=$config ['new_image'] = $data ['full_path'] . '.min' . $data ['file_ext'];
 			$config ['master_dim'] = 'width';
 			//$config ['maintain_ratio'] = 'false';
 			$config ['width'] = 270;
@@ -295,12 +298,15 @@ class Pic extends CI_Controller {
 			$config ['height'] = 89;
 			$this->image_lib->initialize ( $config );
 			$this->image_lib->resize ();
-				
 			$this->load->Model ( 'Pic_m' );
 			//留作以后添加单独标题用
 			$this->load->library('session');
 			$userId=$this->session->userdata('userId');
-			$this->Pic_m->collect('/'.$filename,$name,$userId);
+			//获取新图片高度
+			$root=$this->config->item('root');
+			$res=getimagesize($root.'/'.$newimg);
+			$height=$res[1];
+			$this->Pic_m->collect('/'.$filename,$name,$userId,$height);
 		}
 		$data['msg']='收藏成功，窗口正在关闭。';
 		$this->load->view('close',$data);

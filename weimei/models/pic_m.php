@@ -11,8 +11,8 @@ class Pic_m extends CI_Model {
 		$query = $this->db->get ();
 		return $query->row ()->id;
 	}
-	function upload($src,$albumId,$userId) {
-		$this->db->insert ( 'pic', array ('src' => $src,'userId'=>$userId,'date'=>date('Y-m-d H:i:s')));
+	function upload($src,$albumId,$userId,$height) {
+		$this->db->insert ( 'pic', array ('src' => $src,'userId'=>$userId,'height'=>$height,'date'=>date('Y-m-d H:i:s')));
 		 $this->db->select ( 'LAST_INSERT_ID() AS id' );
 		$query = $this->db->get ();
 		$picId=$query->row ()->id;
@@ -22,8 +22,8 @@ class Pic_m extends CI_Model {
 		} */
 		return $picId; 
 	}
-	function collect($src,$name,$userId){
-		$this->db->insert ( 'pic', array ('src' => $src,'name'=>$name,'userId'=>$userId,'date'=>date('Y-m-d H:i:s')));
+	function collect($src,$name,$userId,$height){
+		$this->db->insert ( 'pic', array ('src' => $src,'name'=>$name,'userId'=>$userId,'height'=>$height,'date'=>date('Y-m-d H:i:s')));
 	}
 	function page_list($page, $count,$order){
 		//->limit($count)
