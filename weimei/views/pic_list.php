@@ -19,10 +19,7 @@
 				<div class="fn-clear"></div>
 			</div>
 			<!--pic-->
-			<div id="pagelist">
-									<?=$page_list_link?>
-			</div>
-				<div class="fn-clear"></div>
 		</div>
 		<!--main-->
+			<div id="pagelist"><?=$page_list_link?></div>
 <?php $this->load->view ( 'footer' ); ?>

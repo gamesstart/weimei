@@ -29,16 +29,14 @@
 	<body>
 		<div id="container">
 		<div id="header">
-			<a href="/">
-				<img id="logo" src="/style/images/logo.png"/>
-			</a>
+		<div id="inner-header">
+			<a href="/" id="logo"><img id="logo" src="/style/images/logo.png" /></a>
 			<div id="menu">
-					<a href="/">首页</a>|
-					<a href="" id="m-popular">热门</a>|
-					<a href="" class="m-popular">今日</a><a href="" class="m-popular">本周</a><a href="" class="m-popular">本月</a><a href="" class="m-popular">今年</a><a href="" class="m-popular">全部</a><a href="" id="m-tag">Tag</a>|
-					<a href="">用户</a>|
-					<a href="">关于</a>
+				<a href="/pic"><img src="/style/images/img.png" alt="" /></a>
+				<a href="/article"><img src="/style/images/text.png" alt="" /></a>
 			</div>
 			<div id="user-msg"></div>
-		</div>	
+			<div class="fn-clear"></div>
+		</div>
+		</div>
 		<!--header-->

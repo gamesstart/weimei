@@ -12,10 +12,10 @@
 <?php }?>
 <div class="fn-clear"></div>
 </div>
-<ul id="pagelist"> <?=$page_list_link?> </ul>
 <!---pic end--->
 </div>
 <div id="right"></div>
 <div class="fn-clear"></div>
 </div>
+<div id="pagelist"><?=$page_list_link?></div>
 <?php $this->load->view ( 'footer' ); ?>

@@ -36,8 +36,8 @@ class Index extends CI_Controller{
 		$config ['total_rows'] = $d['count']/$count;
 		$config ['per_page'] = '1';
 		$config ['num_links'] = 5;
-		$config ['cur_tag_open'] = '<span class=current>';
-		$config ['cur_tag_close'] = '</span>';
+		$config ['cur_tag_open'] = '<strong class=current>';
+		$config ['cur_tag_close'] = '</strong>';
 		//初始化分页
 		$this->pagination->initialize ( $config );
 		$data['page_list_link']=str_replace('page/', 'page-',$this->pagination->create_links ());

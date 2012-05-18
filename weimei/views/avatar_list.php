@@ -19,9 +19,8 @@ $this->load->view ( 'header' );
 <?php } ?>
 <div class="fn-clear"></div>
 </div>
-
-<div class="fn-clear"></div>
-<ul id="pagelist"><?=$page_list_link?></ul>
 </div>
+<div id="pagelist"><?=$page_list_link?></div>
+
 <?php $this->load->view ( 'footer' );
 ?>
