@@ -17,19 +17,7 @@
 <?php }?>
 </div>
 <h2 class='h2-t'>回应······</h2>
-<div id="commets">
-<?php foreach ($comment as $c){?>
-<div class="commentsItem">
-<a class="commentsAvatar" href="/user/i/<?=$c->userId?>"><img src="<?=getMiniPic($c->icon)?>"></a>
-<div class="reply-doc">
-<div class="commentsMsg"><a href="/user/i/<?=$c->userId?>"><?=$c->username?></a>于<?=getTime(strtotime($c->date));?>说|<a class="reply" href="#reply" >回复</a></div>
-<div class="cc-top"></div>
-<p class="commentsContent"><?=$c->content?></p>
-<div class="cc-bottom"></div>
-</div>
-</div>
- <?php }?> 
-</div>
+<?php $this->load->view ( 'showComment' ); ?>
 <a name='reply'></a>
 <div id="liftComment"><textarea id="comment-area" name="comment"
 	class="textarea" ></textarea> <input type="button"
