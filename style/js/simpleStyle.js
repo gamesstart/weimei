@@ -1,4 +1,5 @@
 $(function(){
+	$('.pic-desc').hide();
 	//图片对齐
 	$('.pic-list').each(function(){
 		$('.pic-item:first',$(this)).css('height',$(this).attr('data-h'));

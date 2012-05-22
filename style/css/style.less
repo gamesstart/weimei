@@ -31,6 +31,9 @@ h1{
     padding: 0 5px;
     vertical-align: middle;
 }
+.error{
+  color:red;
+}
 .input-r {
     border: 1px solid #B4B4B4;
     height: 22px;
@@ -174,7 +177,6 @@ h1{
                 margin-bottom: -55px;
                 opacity: 0.8;
                 padding-top: 15px;
-                display:none;
                 top: 0;
                 width: 100%;
                 /*ie6下不能覆盖问题*/
@@ -333,6 +335,7 @@ h1{
      }
      /*pagelist*/
    #footer{
+     color: #999999;
      width:900px;
      margin: 0 auto;
      border-top: 1px solid #F1F1F1;
@@ -343,6 +346,7 @@ h1{
      #about{
        float:right;
        a{
+         color: #999999;
          margin:0px 5px;
        }
      }
@@ -605,4 +609,36 @@ h1{
       float:left;
     }
   }
+}
+/*login from*/
+#loginForm,#regForm,#loginForm{
+    margin: 50px 90px 90px;
+	h1{
+		font-size: 30px;
+    font-weight: bold;
+    color: #666666;
+	}
+	.item{
+	    margin: 15px 0;
+	    label{
+	      width:50px;
+	      line-height: 30px;
+	    }
+	    .input-r{
+	      padding:2px;
+	      width:200px;
+	    }
+	    #loginBtn,#regBtn{
+	      width:80px;
+	      margin-left: 40px;
+        margin-right: 65px;
+	    }
+	    .tips{
+	      margin-left: 50px;
+	    }
+	}
+}
+/*share*/
+#qq-share{
+  float:right;
 }
