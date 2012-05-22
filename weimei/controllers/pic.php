@@ -306,11 +306,12 @@ class Pic extends CI_Controller {
 			$root=$this->config->item('root');
 			$res=getimagesize($root.'/'.$newimg);
 			$height=$res[1];
-			$this->Pic_m->collect('/'.$filename,$name,$userId,$height);
+			$this->Pic_m->collect('/'.$filename,$name,$userId,$height,$location);
 		}
 		$data['msg']='收藏成功，窗口正在关闭。';
 		$this->load->view('close',$data);
 	}
+	/*重新获取图片高度*/
 	function check_pic(){
 		$start=$this->input->get('start');
 		$end=$this->input->get('end');

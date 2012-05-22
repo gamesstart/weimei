@@ -22,8 +22,8 @@ class Pic_m extends CI_Model {
 		} */
 		return $picId; 
 	}
-	function collect($src,$name,$userId,$height){
-		$this->db->insert ( 'pic', array ('src' => $src,'name'=>$name,'userId'=>$userId,'height'=>$height,'date'=>date('Y-m-d H:i:s')));
+	function collect($src,$name,$userId,$height,$location){
+		$this->db->insert ( 'pic', array ('src' => $src,'name'=>$name,'userId'=>$userId,'height'=>$height,'location'=>$location,'date'=>date('Y-m-d H:i:s')));
 	}
 	function page_list($page, $count,$order){
 		//->limit($count)
@@ -45,7 +45,7 @@ class Pic_m extends CI_Model {
 		return $result;
 	}
 	function pic_one($id) {
-		$this->db->select ( 'pic.name title,src,pic.id id,likeCount,username,user.id userId,date,icon' );
+		$this->db->select ( 'pic.name title,src,location,pic.id id,likeCount,username,user.id userId,date,icon' );
 		$this->db->from ( 'pic' );
 		$this->db->where('pic.id',$id)->join('user','user.id=userId');
 		$query = $this->db->get ();
