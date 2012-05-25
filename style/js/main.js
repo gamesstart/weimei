@@ -119,7 +119,7 @@ $(function() {
 		var comment=$('#comment-area').val();
 		if(userId&&comment){
 			var id=(tid?tid:tid)?tid:tid;
-			$('#commets').append('<div class="commentsItem"><a href="/user/i/1" class="commentsAvatar"><img src="'+icon+'"></a><div class="reply-doc"><div class="commentsMsg"><a href="/user/i/1">'+username+'</a>于1 分钟前说|<a href="#reply" class="reply">回复</a></div><div class="cc-top"></div><p class="commentsContent">'+comment+'</p><div class="cc-bottom"></div></div></div>');
+			$('#commets').append('<div class="commentsItem"><a href="/user/i/56" class="commentsAvatar"><img src="'+icon+'"></a><div class="reply-doc"><div class="commentsMsg"><a href="/user/i/'+userId+'">'+username+'</a>于1分钟前说|<a href="#reply" class="reply">回复</a></div><div class="cc-top"></div><div class="commentsContent"><p>'+comment+'</p></div><div class="cc-bottom"></div></div></div>');
 			$.ajax({
 				type:'post',
 				url:siteurl+'/comment/add_comment',
@@ -191,8 +191,7 @@ $(function() {
 		});
 	}
 	/*修改文章*/
-	if($('#r-u-a span').length&&$('#left h1').length&&tid[0]=='e'){
-		if($('#r-u-a span a').text()==$('#sidebar-widget-profile a:first').text()&&userId)
+	if($('#r-u-a span a').text()==$('#user-msg a:first').text()&&userId&&tid[0]=='e'){
 		$('#r-u-a').append("<div class='edit'><a href='"+siteurl+'/article/edit?id='+tid.replace(tid[0],'')+"' class='red-btn'>编辑文章</a></div>");
 	}
 	/*前期tag没有标题补全*/
@@ -221,9 +220,6 @@ $(function() {
 		}
 		return false;
 	});
-	
-	
-		
 	/*
 	* 数据验证
 	*/
@@ -239,12 +235,5 @@ $(function() {
 		}
 		
 	});
-
-
-
-
-	
-	
-	
 	
 });
