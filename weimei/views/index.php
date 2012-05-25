@@ -3,6 +3,7 @@
 	<HEAD>
 		<META content="text/html; charset=utf-8" http-equiv=Content-Type>
 		<title><?=$title?></title>
+		<meta property="qc:admins" content="1667770721551645" />
 		<meta name="author" content="h2ero" />
 		<meta name="keywords" content="<?=$keywords?>" />
 		<meta name="description" content="<?=isset($description)?$description:''?>" />
@@ -40,8 +41,10 @@
 		</div>
 		</div>
 		<!--header-->
-
-		<div id="nav-bar"> </div>
+		<div id="slogan"></div>
+		<div id="nav-bar"> 
+		<div id="qq-share"><a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http%3A%2F%2Fweimei.de%2F"><img src="/style/images/qq-share.png" /></a></div>
+</div>
 		<div id="main">
 			<div id="pic" >
 <?php $imgss=sort3Array($imgs); foreach ( $imgss[0] as $key=>$imgs ) { ?>

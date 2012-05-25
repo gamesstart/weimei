@@ -33,9 +33,6 @@
 				<div class="fn-clear"></div>
 			</div>
 			<!--pic-->
-<div id="pagelist">
-									<?=$page_list_link?>
-			</div>
 			<div class="fn-clear"></div>
 						</div>
 <!---left end--->
@@ -50,6 +47,7 @@
 <!---left end--->
 <div class="fn-clear"></div>
 </div>
+<div id="pagelist"><?=$page_list_link?></div>
 <?php
 $this->load->view ( 'footer' );
 ?>

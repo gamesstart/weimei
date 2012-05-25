@@ -8,7 +8,7 @@
 </p>
 <div class="fn-clear"></div>
 <div id="likes"><a href="#" id="like"></a><a href="#" class="like-tip">喜欢</a><a href="#" class="like-count"><?=$likeCount?></a><div class="fn-clear"></div></div>
-<h2 class="h2-t">来源<a href="<?=$location?>" target="_blank"><img src="/style/images/location.png" /></a></h2>
+<h2 class="h2-t"><img src="/style/images/location.png" /><a id="location" href="<?=$location?>" target="_blank"><?=$location?></a></h2>
 <h2 class='h2-t'>这些人也喜欢······</h2>
 <div id="like-user">
 <?php foreach ($likeUser as $l){?>
