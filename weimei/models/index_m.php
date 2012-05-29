@@ -4,8 +4,8 @@ class Index_m extends CI_Model{
 		parent::__construct();
 		$this->load->database();
 	}
-	function get_latest_user(){
-		$query = $this->db->order_by('id','desc')->get('user',10);
+	function get_latest_user($count=12){
+		$query = $this->db->order_by('id','desc')->get('user',$count);
 		return $query->result();
 	}
 	function get_latest_comment($count){

@@ -41,7 +41,17 @@
 		</div>
 		</div>
 		<!--header-->
-		<div id="slogan"></div>
+		<div id="slogan">
+			<div id="latest-user">
+			<h3 class="h2-t">最近加入...</h3>
+			<div id="latest-user-avatar">
+			<?php foreach ($users as $user){?>
+			<a href="/user/i/<?=$user->id?>"><img src="<?=getMiniPic($user->icon)?>" alt="" /></a>
+			<?php }?>
+			</div>
+			</div>
+		</div>
+		<!-- latest-user -->
 		<div id="nav-bar"> 
 		<div id="qq-share"><a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http%3A%2F%2Fweimei.de%2F"><img src="/style/images/qq-share.png" /></a></div>
 </div>

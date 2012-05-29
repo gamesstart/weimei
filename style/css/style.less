@@ -1,3 +1,17 @@
+/*function*/
+/*transition*/
+.transition (@prop: all, @time: 1s, @ease: linear,@time2) {
+  -webkit-transition: @prop @time @ease @time2;
+  -moz-transition: @prop @time @ease @time2;
+  -o-transition: @prop @time @ease @time2;
+  -ms-transition: @prop @time @ease @time2;
+  transition: @prop @time @ease @time2;
+}  
+/*opcity*/
+.opacity(@num){
+    opacity: @num;
+    filter: ~"Alpha(opacity="@num*100~")";
+}
 /*base2*/
 body{
   font-size:12px;
@@ -91,6 +105,24 @@ h1{
    		margin:50px auto;
    		background:url('/style/images/900.png') no-repeat;
    }
+   #latest-user{
+      margin-top: 300px;
+      position: absolute;
+      width: 450px; 
+      .h2-t{
+         color: #DBDBDB; 
+      }
+      img{
+        border: 1px solid #FFFFFF;
+        box-shadow: 1px 1px 5px #C2C2C2;
+        margin: 1px;
+        .opacity(0.1);
+        .transition(all,1s,ease,0s);
+        &:hover{
+          .opacity(1);
+        }
+      }
+   }
    #share-bar{
      
    }
@@ -173,7 +205,7 @@ h1{
              margin: 20px 0;
              overflow:hidden;
              .pic-desc{
-                filter: ~"Alpha(opacity=80)";
+                .opacity(0.8);
                 background: none repeat scroll 0 0 #000;
                 cursor: pointer;
                 height: 40px;
