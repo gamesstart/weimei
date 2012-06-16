@@ -232,6 +232,20 @@ $(function() {
 		else{
 			$(this).parent().find('.error').text('');
 			$('#regBtn').removeAttr('disabled');
+			if($(this).attr('id')=='email'){
+				pattern=/^[\w|.]+@\w+\.[a-z]{2,}$/;
+				if(!pattern.test($(this).val())){
+					$(this).parent().find('.error').text('对不起！邮箱格式不对.');
+					$('#regBtn').attr('disabled','true');
+				}
+			}
+			else if($(this).attr('id')=='password'){
+				pattern=/^\w{6,12}$/;
+				if(!pattern.test($(this).val())){
+					$(this).parent().find('.error').text('对不起！密码格式不对.');
+					$('#regBtn').attr('disabled','true');
+				}
+			}
 		}
 		
 	});
