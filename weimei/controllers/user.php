@@ -30,7 +30,8 @@ class User extends CI_Controller {
 			'password' => md5($this->input->post('password')),
 			'email' => $this->input->post ('email' ),
 			'ip' => $this->input->ip_address (),
-			'regTime'=>date("Y-m-d H:i:s")
+			'regTime'=>date("Y-m-d H:i:s"),
+			'lastLogin'=>date("Y-m-d H:i:s")
 			);
 			if ($this->User_m->reg ( $data )) {
 				//显示成功信息并跳转

@@ -9,20 +9,24 @@ class  User_m extends CI_Model{
 		}
 		function check_reg($email){
 		   $query = $this->db->get_where('user',array('email'=>$email));
-         return $query->row();
+         	return $query->row();
 		}
 		function check_login($email,$password){
 		   $query=$this->db->get_where('user',array('email'=>$email,'password'=>md5($password)));
-		   return $query->row();
+		   $result=$query->row();
+		   if($result->id){
+      			$this->db->update('user',array('lastLogin'=>date("Y-m-d H:i:s"))); 
+		   }
+		   return $result;
 		}
 		function update_user_msg($data){
-		$this->db->where('id',$data['id']);
-      $this->db->update('user', $data); 
+			$this->db->where('id',$data['id']);
+      		$this->db->update('user', $data); 
 		}
 		function update_pwd($data){
 			$this->db->where('id',$data['id']);
 			$this->db->where('password',$data['password']);
-      	$this->db->update('user', array('password'=>$data['newpassword']));
+      		$this->db->update('user', array('password'=>$data['newpassword']));
       	return $this->db->affected_rows();
 		}
 		function get_user_msg($id){
