@@ -6,7 +6,7 @@ class U extends CI_Controller {
 		$this->load->model ( 'User_m' );
 		$this->load->library ( 'session' );
 		$this->load->helper ( 'html' );
-		//$this->output->enable_profiler(TRUE);
+		$this->output->enable_profiler(TRUE);
  		
 	}
 	function _remap($method)

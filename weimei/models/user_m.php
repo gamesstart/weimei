@@ -36,7 +36,16 @@ class  User_m extends CI_Model{
 		function get_user_pic($page,$count,$userId){
 			$this->db->select ('name,src,height,id,date' );
 			$query=$this->db->order_by ( "id", "desc" )->where('userId',$userId)->get ( 'pic', $count, $count * $page );
-			$result['imgs']=$query->result ();
+			$like=$this->db->query("select likeItem from user where id=$userId")->row()->likeItem;
+			$likePic=array();
+			if($like){
+				/*处理去掉aid，eid,以及最后的，等*/
+				$patterns = array ('/p(\d+?),/','/([e|a]\d+?,)/','/,$/');
+				$replace = array ('${1},','','');
+				$likePicId=preg_replace($patterns, $replace,$like);
+				$likePic=$this->db->query("select name,src,height,id,date from pic where id in ($likePicId) and userId<>$userId")->result();
+			}
+			$result['imgs']=array_merge($query->result (),$likePic);
 			$result['count']=$this->db->where('userId',$userId)->count_all_results('pic');
 			return $result;
 		}
