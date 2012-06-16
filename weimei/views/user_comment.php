@@ -16,14 +16,6 @@
  </div>
 <h2 class='h2-t'>MESSAGE······</h2>
 <?php $this->load->view ( 'showComment' ); ?>
-<a name='reply'></a>
-<h2 class='h2-t'>留言······</h2>
-
-<input type="hidden" id="tid" name="tid" value="u<?=$userId?>">
-<div id="liftComment"><textarea id="comment-area" name="comment"
-	class="textarea" ></textarea> <input type="button"
-	class="red-btn" id="comment-submit" value="评论"></div>
-</div>
 <!---left end--->
 <div id="right">
 	<div id="r-u-a" class="right-box">

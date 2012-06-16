@@ -20,15 +20,15 @@ $this->load->view('header');
 				</tr>
 				<tr>
 					<td>原密码：</td>
-					<td><input type="password" size="25" maxlength="20" id="pwd" name="password" class="input-r" ></td>
+					<td><input type="password" size="25" maxlength="20" id="pwd" name="password" class="input-r" placeholder="请输入旧爱的" ></td>
 				</tr>
 				<tr>
 					<td>新密码：</td>
-					<td><input type="password" size="25" maxlength="20" id="newpwd" name="newpassword" class="input-r" ></td>
+					<td><input type="password" size="25" maxlength="20" id="newpwd" name="newpassword" class="input-r" placeholder="请输入新欢的" ></td>
 				</tr>
 				<tr>
 					<td>重新输入：</td>
-					<td><input type="password" size="25" maxlength="20" id="newpwd2" name="newpassword2" class="input-r" ></td>
+					<td><input type="password" size="25" maxlength="20" id="newpwd2" name="newpassword2" class="input-r" placeholder="确认新欢的？" ></td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>

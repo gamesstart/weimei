@@ -15,11 +15,6 @@
 </div>
 <h2 class='h2-t'>回应······</h2>
 <?php $this->load->view ( 'showComment' ); ?>
-<a name='reply'></a>
-<div id="liftComment"><textarea id="comment-area" name="comment"
-	class="textarea" ></textarea> <input type="button"
-	class="red-btn" id="comment-submit" value="评论"></div>
-	</div>
 <!---left end--->
 <div id="right">
 	<div id="r-u-a" class="right-box">
@@ -39,7 +34,7 @@
 		<div class='fn-clear'></div>
 		<div class="labels-add"><span>添加标签有助于整理你的分享，多个标签请用逗号分隔</span>
 <fn-clear>
-<form method="post"><input type="text" name="tags" id="tags" ><input type="button" id="tag-btn" class="red-btn" value="添加"> 
+<form method="post"><input type="text" name="tags" id="tags" placeholder="标签1,标签2,标签3"><input type="button" id="tag-btn" class="red-btn" value="添加"> 
 <input type="hidden" id="tid" name="tid" value="e<?=$id?>"></form>
 </div>
 	</div>

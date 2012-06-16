@@ -11,12 +11,12 @@ $this->load->view('header');
 			</div>
 			<div class="item">
 				<label>邮箱：</label>
-				<input type="text" maxlength="50" class="input-r" value="" name="email" id="">
+				<input type="text" maxlength="50" class="input-r" value="" name="email" id="" placeholder="输入常用邮箱">
 				<span id="uname_tip"></span>
 			</div>
 			<div class="item">
 				<label>密码：</label>
-				<input type="password" maxlength="20" class="input-r" name="password" id="password">
+				<input type="password" maxlength="20" class="input-r" name="password" id="password"  placeholder="输入不常用的密码">
 				<span id="pwd_tip"></span>
 			</div>	
 			<div class="item">

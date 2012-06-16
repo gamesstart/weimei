@@ -43,11 +43,11 @@ $this->load->view('header');
 				</tr>	
 				<tr>
 					<td>性别：</td>
-					<td><input type="text" name='sex' value="<?=$sex?>" class="input-r" >(MM or GG)</td>
+					<td><input type="text" name='sex' value="<?=$sex?>" class="input-r" placeholder="MM 还是 GG">(MM or GG)</td>
 				</tr>	
 				<tr>
 					<td>QQ：</td>
-					<td><input type="text" maxlength="11" id="qq" value="<?php echo $qq;?>" name="qq" class="input-r" ></td>
+					<td><input type="text" maxlength="11" id="qq" value="<?php echo $qq;?>" name="qq" class="input-r"  placeholder="扣扣啦?"></td>
 				</tr>
 				<tr>
 					<td>所在城市：</td>
@@ -55,7 +55,7 @@ $this->load->view('header');
 				</tr>
 				<tr>
 					<td>关于我：</td>
-					<td> <textarea name="about" id="descr" class="textarea" cols="70" rows="10"><?php echo $about;?></textarea></td>
+					<td> <textarea name="about" id="descr" class="textarea" cols="70" rows="10" placeholder="谁无过去，谁没曾经？"><?php echo $about;?></textarea></td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
