@@ -1,10 +1,15 @@
 $(function(){
+	/*图片描述信息*/
+	var location=$('#location');
+	var href=location.attr('href');
+	if(href=="来自上传")
+		location.attr('href','#');
+	/*图片对齐*/
 	$('.pic-desc').hide();
-	//图片对齐
 	$('.pic-list').each(function(){
 		$('.pic-item:first',$(this)).css('height',$(this).attr('data-h'));
 	});
-	//图片信息提示
+	/*图片信息提示*/
 	$('.pic-item').hover(function(){
 		$('.pic-desc',this).show();
 	},function(){
