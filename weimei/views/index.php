@@ -80,6 +80,5 @@
 		<div id="link">
 			<h2 class="h2-t">酷站推荐······</h2>
 			<li><a target="_blank" href="http://www.2weimei.com">爱唯美小站</a></li>
-			<li><a target="_blank" href="http://www.newborner.com">明星宝贝网</a></li>
 		</div>
 <?php $this->load->view('footer'); ?>
