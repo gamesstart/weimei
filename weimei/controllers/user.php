@@ -115,6 +115,7 @@ class User extends CI_Controller {
 			$data = array (
 			'id' => $userid,
 			'city' =>$this->input->post ( 'city' ),
+			'birthday' =>$this->input->post ( 'birthday' ),
 			'qq' =>$this->input->post ( 'qq' ),
 			'city' =>$this->input->post ( 'city' ),
 			'sex' =>$this->input->post ( 'sex' ),
