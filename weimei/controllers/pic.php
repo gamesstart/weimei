@@ -129,8 +129,13 @@ class Pic extends CI_Controller {
 		if($data['firstId'])
 			delete_cookie('picAlbumId',getDomain(),'/');
 		//显示成功信息并跳转
-		 $data=array('msg'=>'提交成功',
-				'url'=>site_url ( 'pic/page' ));
+		 if($data['id']){
+		 	$data=array('msg'=>'提交成功',
+		 			'url'=>site_url ( 'album/page' ));
+		 }else{
+		 	$data=array('msg'=>'提交成功',
+		 			'url'=>site_url ( 'pic/page' ));
+		 }
 		$this->load->view('redirect',$data); 
 		
 	}
