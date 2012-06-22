@@ -92,8 +92,10 @@ class  User_m extends CI_Model{
 			//喜欢
 			if(!$is_liked){
 				$like=$this->db->query("select likeUser from `user` WHERE id =$uid")->row();
+				if($like->likeUser){
 				$like->likeUser=preg_replace('/,$/','',$like->likeUser);
 				return $this->db->query("select username,id userId,icon from `user` where id in ($like->likeUser)")->result();
+				}
 			}else{
 				//被喜欢
 				return $this->db->query("select username,id userId,icon from `user` where likeUser like '%$uid,%'")->result();

@@ -225,13 +225,13 @@ $(function() {
 		//判断是否已经喜欢
 		var likeUserId=$('#like-u').attr('likeUserId');
 		var liked=new Array();
-		$('#list-u-like a').each(function(){
+		$('#list-like-u a').each(function(){
 			url=$(this).attr('href');
 			pattern=/(\d+)$/;
 			res=pattern.exec(url);
 			liked.push(res[0]);
 		});
-		if(liked.indexOf(likeUserId)!=-1)
+		if(liked.indexOf(userId)!=-1)
 			$('#like-u').text('已喜欢');
 		$('#like-u').click(function(){
 			if(userId){
