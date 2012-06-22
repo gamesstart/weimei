@@ -199,9 +199,11 @@ class User extends CI_Controller {
 			}
 		}
 	}
-	/*like*/
+	/*like user*/
 	function like(){
-		$this->input->post();
+		$uid=$this->input->post('uid');
+		$likeUserId=$this->input->post('likeUserId');
+		$this->User_m->like($likeUserId,$uid);
 	}
 }
 

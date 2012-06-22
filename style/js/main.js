@@ -220,6 +220,36 @@ $(function() {
 		}
 		return false;
 	});
+	/*like user*/
+	if($('#like-u')){
+		//判断是否已经喜欢
+		var likeUserId=$('#like-u').attr('likeUserId');
+		var liked=new Array();
+		$('#list-u-like a').each(function(){
+			url=$(this).attr('href');
+			pattern=/(\d+)$/;
+			res=pattern.exec(url);
+			liked.push(res[0]);
+		});
+		if(liked.indexOf(likeUserId)!=-1)
+			$('#like-u').text('已喜欢');
+		$('#like-u').click(function(){
+			if(userId){
+				//reg exp 获取likeUserId 通过用户头像 id.jpg
+			   $.ajax({
+				   type : 'POST',
+				   url : '/user/like',
+				   data :'uid='+userId+'&likeUserId='+likeUserId,
+				   success : function(msg) {
+					   $('#like-u').text('已喜欢');
+				   }
+			   });
+			}else{
+				alert('对不起，只有登录才能点击喜欢 : )');
+			}
+			return false;
+		});
+	}
 	/*
 	* 数据验证
 	*/

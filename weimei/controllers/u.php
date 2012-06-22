@@ -6,7 +6,7 @@ class U extends CI_Controller {
 		$this->load->model ( 'User_m' );
 		$this->load->library ( 'session' );
 		$this->load->helper ( 'html' );
-		$this->output->enable_profiler(TRUE);
+		//$this->output->enable_profiler(TRUE);
  		
 	}
 	function _remap($method)
@@ -31,6 +31,10 @@ class U extends CI_Controller {
 		$data->username=$d->username;
 		$data->icon=$d->icon;
 		$data->about=$d->about;
+		//获取喜欢用户
+		$this->load->helper('self_define_helper');
+		$data->like=$this->User_m->list_like_user($userId);
+		$data->liked=$this->User_m->list_like_user($userId,1);
 		$this->load->view('user_tag',$data);
 	}
 	function pic($userId,$page){
@@ -63,6 +67,9 @@ class U extends CI_Controller {
 			$data['icon']=$d->icon;
 			$data['about']=$d->about;
 			$data['title']=$d->username.'发布的'.$data[title];
+			//获取喜欢用户
+			$data['like']=$this->User_m->list_like_user($userId);
+			$data['liked']=$this->User_m->list_like_user($userId,1);
 			$this->load->view('user_view_pic',$data);
 		}
 		function comment($userId){
@@ -77,7 +84,9 @@ class U extends CI_Controller {
 			$data->username=$d->username;
 			$data->icon=$d->icon;
 			$data->about=$d->about;
-			
+			//获取喜欢用户
+			$data->like=$this->User_m->list_like_user($userId);
+			$data->liked=$this->User_m->list_like_user($userId,1);
 			$this->load->view('user_comment',$data);
 		}
 }

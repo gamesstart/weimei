@@ -15,7 +15,7 @@ class  User_m extends CI_Model{
 		   $query=$this->db->get_where('user',array('email'=>$email,'password'=>md5($password)));
 		   $result=$query->row();
 		   if($result->id){
-      			$this->db->update('user',array('lastLogin'=>date("Y-m-d H:i:s"))); 
+      			$this->db->where('id',$result->id)->update('user',array('lastLogin'=>date("Y-m-d H:i:s"))); 
 		   }
 		   return $result;
 		}
@@ -38,12 +38,15 @@ class  User_m extends CI_Model{
 			$query=$this->db->order_by ( "id", "desc" )->where('userId',$userId)->get ( 'pic', $count, $count * $page );
 			$like=$this->db->query("select likeItem from user where id=$userId")->row()->likeItem;
 			$likePic=array();
+			//有like
 			if($like){
 				/*处理去掉aid，eid,以及最后的，等*/
 				$patterns = array ('/p(\d+?),/','/([e|a]\d+?,)/','/,$/');
 				$replace = array ('${1},','','');
 				$likePicId=preg_replace($patterns, $replace,$like);
-				$likePic=$this->db->query("select name,src,height,id,date from pic where id in ($likePicId) and userId<>$userId")->result();
+				//有like且有picId
+				if($likePicId)
+					$likePic=$this->db->query("select name,src,height,id,date from pic where id in ($likePicId) and userId<>$userId")->result();
 			}
 			$result['imgs']=array_merge($query->result (),$likePic);
 			$result['count']=$this->db->where('userId',$userId)->count_all_results('pic');
@@ -73,5 +76,29 @@ class  User_m extends CI_Model{
 		    	return true;
 		    }
 		}
+		//喜欢用户
+		function like($likeUserId,$uid){
+			$like=$this->db->query("select likeUser from `user` WHERE id =$uid")->row();
+			preg_match("/$likeUserId,/",$like->likeUser,$is_like);
+			if($is_like){
+				$likeUserId=preg_replace("/$likeUserId,/",'', $like->likeUser);
+				$this->db->query("UPDATE `user` SET likeUser='$likeUserId' WHERE id =$uid");
+			}else{
+				$this->db->query("UPDATE `user` SET likeUser= concat(likeUser,'$likeUserId,') WHERE id =$uid");
+			}
+		}
+		//获取喜欢用户$is_liked获取被喜欢用户
+		function list_like_user($uid,$is_liked=0){
+			//喜欢
+			if(!$is_liked){
+				$like=$this->db->query("select likeUser from `user` WHERE id =$uid")->row();
+				$like->likeUser=preg_replace('/,$/','',$like->likeUser);
+				return $this->db->query("select username,id userId,icon from `user` where id in ($like->likeUser)")->result();
+			}else{
+				//被喜欢
+				return $this->db->query("select username,id userId,icon from `user` where likeUser like '%$uid,%'")->result();
+			}
+		}
+		
 
 }
