@@ -192,7 +192,7 @@ $(function() {
 	}
 	/*修改文章*/
 	if($('#r-u-a span a').text()==$('#user-msg a:first').text()&&userId&&tid[0]=='e'){
-		$('#r-u-a').append("<div class='edit'><a href='"+siteurl+'/article/edit?id='+tid.replace(tid[0],'')+"' class='red-btn'>编辑文章</a></div>");
+		$('#r-u-a').append("<div class='edit'><a href='"+siteurl+'article/edit?id='+tid.replace(tid[0],'')+"' class='red-btn'>编辑文章</a></div>");
 	}
 	/*前期tag没有标题补全*/
 	$('.e-t').each(function(){

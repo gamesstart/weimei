@@ -15,7 +15,8 @@ class article extends CI_Controller {
 		if($this->User_m->is_login ())
 		if($_POST) {
 			$data = array ('userId' => $this->session->userdata ( 'userId' ), 'name' => $this->input->post ( 'title' ), 'content' => toText ( $this->input->post ( 'content' ) ), 'date' => date ( 'Y-m-d H:i:s' ) );
-			$data['description']=$data['content'];
+			$pattern = '/\[img\](\d+)\[\/img\]/is';
+			$data['description']=preg_replace($pattern,'',$data['content']);
 			//提取nail图
 			$pattern = '/\[img\](\d+)\[\/img\]/i';
 			preg_match($pattern, $data['content'],$res);
@@ -49,7 +50,7 @@ class article extends CI_Controller {
 						'name' => $this->input->post ( 'title' ),
 						'content' => toText ( $this->input->post ( 'content' ))
 						);
-				$pattern = '/\[img\](\d+)\[\/img\]/i';
+				$pattern = '/\[img\](\d+)\[\/img\]/is';
 				$data['description']=preg_replace($pattern,'',$data['content']);
 				//提取nail图
 				preg_match($pattern, $data['content'],$res);

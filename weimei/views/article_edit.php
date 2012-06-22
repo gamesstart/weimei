@@ -1,7 +1,7 @@
 <?php $this->load->view('header'); ?>
 		<div id="main">
 				<div id="left">	
-				<form action="add" method="post">
+				<form action="edit" method="post">
 				<label>标题：</label><input type="text" name="title"  value="<?=$e->name?>" class="input-r" id="add-essay-title"/>
 				<input type="text" name="id" value="<?=$id?>" style="display:none;"/>
 				</br>
