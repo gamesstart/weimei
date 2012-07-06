@@ -61,15 +61,16 @@ class U extends CI_Controller {
 			$data ['page_list_link'] = $this->pagination->create_links ();
 			$data['title']='美图'.$page.'页';
 			//用户基本信息
-			$d=$this->User_m->get_user_msg($userId);
-			$data['userId']=$d->id;
-			$data['username']=$d->username;
-			$data['icon']=$d->icon;
-			$data['about']=$d->about;
-			$data['title']=$d->username.'发布的'.$data[title];
+			$u=$this->User_m->get_user_msg($userId);
+			$data['userId']=$u->id;
+			$data['username']=$u->username;
+			$data['icon']=$u->icon;
+			$data['about']=$u->about;
+			$data['title']=$u->username.'发布的'.$data[title];
 			//获取喜欢用户
 			$data['like']=$this->User_m->list_like_user($userId);
 			$data['liked']=$this->User_m->list_like_user($userId,1);
+			$data['imgs']['count']=$d['count'].'-'.$count;
 			$this->load->view('user_view_pic',$data);
 		}
 		function comment($userId){

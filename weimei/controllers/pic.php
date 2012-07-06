@@ -43,6 +43,7 @@ class Pic extends CI_Controller {
 		if($order)
 		$data['page_list_link']=preg_replace('/href="(.*?)"/',"href='$1?order=$order'", $data['page_list_link']);
 		$data['title']='美图'.$page.'页';
+		$data['imgs']['count']=$d['count'].'-'.$count;
 		$this->load->view ( 'pic_list', $data );
 	}
 	//显示单张图片

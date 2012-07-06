@@ -4,7 +4,7 @@ class Album extends CI_Controller {
 		parent::__construct ();
 		$this->load->helper ( 'url' );
 		$this->load->library ( 'session' );
-		//$this->output->enable_profiler ( TRUE );
+		$this->output->enable_profiler ( TRUE );
 	}
 	function index() {
 		redirect ( 'album/page/0' );
@@ -23,20 +23,20 @@ class Album extends CI_Controller {
 		//分页
 		$this->load->library ( 'pagination' );
 		$config ['base_url'] = site_url ( 'album/page' );
-		$config ['total_rows'] =$d['count']/10;
+		$config ['total_rows'] =$d['count']/$count;
 		$config ['per_page'] = '1';
 		$config ['num_links'] = 5;
 		$config ['cur_tag_open'] = '<span class=current>';
 		$config ['cur_tag_close'] = '</span>';
-		
 		$this->pagination->initialize ( $config );
 		$data ['page_list_link'] = $this->pagination->create_links ();
 		$data['title']='专辑'.$page.'页';
+		$data['imgs']['count']=$d['count'].'-'.$count;
 		$this->load->view ( 'album_list', $data );
 	}
 	function detail() {
 		$this->output->cache(30);
-			$this->load->helper('self_define_helper');
+		$this->load->helper('self_define_helper');
 		//
 		$albumId = $this->uri->segment (3, 0 );
 		$page = $this->uri->segment ( 4, 0 );
@@ -50,7 +50,7 @@ class Album extends CI_Controller {
 		$this->load->library ( 'pagination' );
 		$config ['uri_segment'] = 4;
 		$config ['base_url'] = site_url ( 'album/detail/' . $albumId );
-		$config ['total_rows'] ='10';
+		$config ['total_rows'] =$data['img']['count']/$count;
 		$config ['per_page'] = '1';
 		$config ['num_links'] = 5;
 		$config ['cur_tag_open'] = '<span class=current>';
@@ -58,6 +58,7 @@ class Album extends CI_Controller {
 		$this->pagination->initialize ( $config );
 		$data ['page_list_link'] = $this->pagination->create_links ();
 		$data['title']=$data['imgs'][0]->name.'专辑'.$page.'页';
+		$data['imgs']['count']=$data['imgs']['count'].'-'.$count;
 		$this->load->view ( 'album_detail', $data );
 	}
 }
