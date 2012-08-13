@@ -10,7 +10,7 @@
 <h2 class='h2-t'>这些人也喜欢······</h2>
 <div id="like-user">
 <?php foreach ($likeUser as $l){?>
-<a href=/user/i/<?=$l->id?> title="<?=$l->name?>"><img src="<?=$l->icon?>"></a>
+<a href=/user/i/<?=$l['id']?> title="<?=$l['name']?>"><img src="<?=$l['icon']?>"></a>
 <?php }?>
 </div>
 <h2 class='h2-t'>回应······</h2>

@@ -108,7 +108,7 @@ class article extends CI_Controller {
 		}
 		//获取喜欢用户
 		$this->load->Model ( 'Like_m' );
-		$data->likeUser=$this->Like_m->like_user("e$id");
+		$data['likeUser']=$this->Like_m->like_user("e$id");
 		//获取评论
 		$this->load->Model ( 'Comment_m' );
 		$data['comment']= $this->Comment_m->get_comment ( 'e' . $id );
