@@ -1,4 +1,31 @@
 /*Saturday, October 22 2011 02:33*/
+	/*getDomain 获取顶级域名*/
+	function getDomain() {
+		url=document.domain;
+		   var domainExt = ['com', 'org', 'gov'];
+		   //如果是ip地址直接返回
+		   if (/[0-9]/.test(url[url.length - 1])) {
+		       return url;
+		   } else {
+		       var domain = '';
+		       url = url.split('.');
+		      if (url.length >= 2) {
+		          domain += url.pop();
+		          ext = url.pop()
+		          domain = ext + '.' + domain;
+		          //判断是否为demo.org.cn等情况
+		          if (domainExt.indexOf(ext) != -1) {
+		              domain = url.pop() + '.' + domain;
+		              return domain;
+		          } else {
+		              return domain;
+		          }
+		      } else {
+		          //返回是localhost没有后缀的情况
+		          return url;
+		      }
+		  }
+		}
 /*Cookie*/
 	var Cookie = {
 			get : function(name) {
@@ -53,23 +80,7 @@ $(function() {
 	}
 	/*fancybox*/
 	$("#picOne a").fancybox();
-	/*getDomain 获取顶级域名*/
-	function getDomain(){
-		var url=document.domain;
-		if(48<=url[url.length-1].charCodeAt()<=57)
-		return url;
-		else{
-		var domain='';
-		url=url.split('.');
-		if(url.length>2){
-		domain+=url.pop();
-		domain=url.pop()+'.'+domain;
-		return domain;
-		}else{
-		return url;
-		}
-		}
-	}
+
 	
 	if(userId){
 		$('#user-msg').html("你好,<a href='"+siteurl+"user/i/"+userId+"'>"+username+"</a>&nbsp;&nbsp;<a class='link1' href='"+siteurl+"user/set'>设置</a> <a class='link1' id='loginout' href='"+siteurl+"user/login_out'>退出</a> ");
