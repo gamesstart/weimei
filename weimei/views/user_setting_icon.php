@@ -11,58 +11,41 @@ $this->load->view('header');
 </ul>
  </div>
  <!-- class bar -->
-	<div class="content">
-
-		<table>
-			<tbody>
-			<tr><span id="error" style="color:red"><?php echo isset($error)?$error:'';?></span></tr>
-			<tr>
-			<td width="50%"><div class="line">预览</div></td>
-			<td><div class="line">设置新头像</div></td>
-			</tr>
-			<tr>
-			<td width="50%" valign="top" rowspan="3">
-			<div style="border:0px solid #D6D7D6;width:260px;height:310px;text-align:center;display: table-cell; vertical-align:middle;overflow:hidden;">
-							<?php echo img($icon);?>
-			</div>
-			</td>
-			<td>
-			<form action="/user/set_icon" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-				你可以上传JPG文件
-			<input type="file" name="userfile" size="20" />
-<br /><br />
-<input type="submit" class="red-btn" value="上传">
-				</form>
-			</td>
-			</tr>
-			<tr>
-			<td>
-				<table width="100%">
-					<tbody><tr>
-					<td width="50%">
-						<div class="fl"> <br>
-						<div id="preimg" class="ihome-head">
-						</div>
-						</div>
-					</td>
-					<td>
-						<div class="fl"> 当前小头像<br>
-						<div id="preimg1" class="ihome-head">
-							<?php echo img(getMiniPic($icon));?>
-						</div>
-						</div>
-					</td>
-					</tr>
-				</tbody></table>
-				
-			</td>
-			</tr>
-				<tr>
-				<td style="line-height:30px;"> 
-			</td>
-			</tr>
-			</tbody></table>
+ <div id="left">
+<div style="margin-bottom: 5px;">
+<h2 class="h2-t">设置新头像</h2>
+<strong>上传你的个性头像！</strong>
+<span>图像最大500px*500px,JPG格式.</span>
+<input type="hidden" id="x" name="x" />
+<input type="hidden" id="y" name="y" />
+<input type="hidden" id="w" name="w" />
+<input type="hidden" id="h" name="h" />
 </div>
+<input type="button" value="上传" class="red-btn" id="avatar_upload" />
+<input type="button" style="float: left; margin-left: 70px; margin-top: -22px;" value="裁剪" class="red-btn" id="crop">
+<div style="margin-top: 20px; width: 500px; height: 500px;">
+<img src="<?=$icon?>.org.jpg" id="cropbox"/>
+</div>
+ </div>
+ <div id="right">
+<h2 class="h2-t">头像预览....</h2>
+<!-- - -->
+		<div style="height: 200px; overflow: hidden; width: 200px;margin: 15px 0;border: 6px solid #CCCCCC;">
+			<img name="" id="user-avatar1" src="<?=$icon?>.org.jpg" alt="" />
+		</div>
+		<h2 class="h2-t">(200px*200px 预览)</h2>
+		<div style="height: 100px; overflow: hidden; width: 100px;margin: 15px 0;border: 6px solid #CCCCCC;">
+			<img name="" id="user-avatar2" src="<?=$icon?>.org.jpg" alt="" />
+		</div>
+		<h2 class="h2-t">(100px*100px 预览)</h2>
+		<div style="height: 48px; overflow: hidden; width: 48px;margin: 15px 0;border: 6px solid #CCCCCC;">
+			<img name="" id="user-avatar3" src="<?=$icon?>.org.jpg" alt="" />
+		</div>	
+		<h2 class="h2-t">(48px*48px 预览)</h2>
+<!-- - -->
+ </div>
+				
+
 </div>
 <?php
 $this->load->view('footer');

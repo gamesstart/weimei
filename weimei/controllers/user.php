@@ -154,51 +154,72 @@ class User extends CI_Controller {
 	}
 	function set_icon() {
 		if($this->User_m->is_login ()){
+			$userId = $this->session->userdata ( 'userId' );
+			$data=$this->User_m->get_user_msg($userId);
+			$data ['title'] = '头像设置';
 			$this->load->helper('self_define_helper');
-			$data ['title'] = '头像设置';		
-			if ($_FILES) {
-				//上传
-				$foldername = $this->config->item ( 'upload_folder_name' );
-				$folder = $this->config->item ( 'upload_folder' );
-				$config ['upload_path'] = $folder . '/icon';
-				$config ['allowed_types'] = 'jpg|jpeg|png';
-				$config ['max_size'] = '100';
-				$config ['max_width'] = '250';
-				$config ['max_height'] = '250';
-				$config ['overwrite'] = TRUE;
-				$config ['file_name'] = $this->session->userdata ( 'userId' );
-				if (! is_dir ( $config ['upload_path'] ))
-					mkdir ( $config ['upload_path'], 0755,true);
-				$this->load->library ( 'upload', $config );
-				$this->session->userdata ( 'userId' );
-				if (! $this->upload->do_upload ()) {
-					$error = array ('error' => $this->upload->display_errors () );
-					$this->load->view ( 'user_setting_icon', $error );
-				} else {
-					//上传成功后resize
-					$data = $this->upload->data ();
-					//生成缩略图
-					$config ['image_library'] = 'gd2';
-					$config ['source_image'] = $data ['full_path'];
-					$config ['new_image'] = $data ['file_path'] . $data ['raw_name'].$data ['file_ext'].'.min'.$data ['file_ext'];
-					$config ['maintain_ratio'] = TRUE;
-					$config ['width'] = 48;
-					$config ['height'] = 48;
-					$this->load->library ( 'image_lib', $config );
-					$this->image_lib->resize ();
-					$data ['title'] = '帐号设置';
-					$data['icon']='/'.$config ['upload_path'].'/'.$data['file_name'];
-					$this->User_m->set_icon($this->session->userdata ( 'userId' ),$data['icon']);
-					$this->load->view ( 'user_setting_icon', $data );
-				}
-			} else {
-				$userId = $this->session->userdata ( 'userId' );
-				$data=$this->User_m->get_user_msg($userId);
-				$data ->title='帐号设置';
-				$this->load->view ( 'user_setting_icon', $data );
+			$data['js']= js ( array ('jquery.Jcrop.min','jquery.uploadify.min','upload') );
+			$data['css']= css ( array ('jquery.Jcrop.min' ) );
+			$this->load->view ( 'user_setting_icon', $data );
+				
+		}
+	}
+	function upload_icon(){
+		$userId=$this->input->post('userId');
+		$folder = $this->config->item ( 'upload_folder' );
+		$path=$folder . '/icon/'.$userId.'.jpg.org.jpg';
+		if (! is_dir ( dirname($path) )) {
+			mkdir ( dirname($path), 0755 ,true);
+		}
+		move_uploaded_file($_FILES["userfile"]["tmp_name"],$path);
+		//缩放图片
+		$img=getimagesize($path);
+		$width=$img[0];
+		$height=$img[1];
+		if($width>500||$height>500){
+			if($width>$height){
+				$targ_w =500;
+				$targ_h =$height*500/$width;
+				$jpeg_quality = 90;
+				$img_r = imagecreatefromjpeg($path);
+				$dst_r = ImageCreateTrueColor( $targ_w, $targ_h );
+				imagecopyresampled($dst_r,$img_r,0,0,0,0,$targ_w,$targ_h,$width,$height);
+				imagejpeg($dst_r,$path);
+			}else{
+				$targ_h =500;
+				$targ_w =$width*500/$height;
+				$jpeg_quality = 90;
+				$img_r = imagecreatefromjpeg($path);
+				$dst_r = ImageCreateTrueColor( $targ_w, $targ_h );
+				imagecopyresampled($dst_r,$img_r,0,0,0,0,$targ_w,$targ_h,$width,$height);
+				imagejpeg($dst_r,$path);
 			}
 		}
 	}
+	function cut_icon(){
+		$userId = $this->session->userdata ( 'userId' );
+		$folder = $this->config->item ( 'upload_folder' );
+		$path=$folder . '/icon/'.$userId.'.jpg.org.jpg';
+		/*裁剪*/
+		//200*200
+		$targ_w = $targ_h =200;
+		$jpeg_quality = 90;
+		$img_r = imagecreatefromjpeg($path);
+		$dst_r = ImageCreateTrueColor( $targ_w, $targ_h );
+		imagecopyresampled($dst_r,$img_r,0,0,$_POST['x'],$_POST['y'],$targ_w,$targ_h,$_POST['w'],$_POST['h']);
+		imagejpeg($dst_r,$folder . '/icon/'.$userId.'.jpg');
+		imagedestroy($dst_r);
+		//150*150
+		$targ_w = $targ_h =48;
+		$jpeg_quality = 90;
+		$img_r = imagecreatefromjpeg($path);
+		$dst_r = ImageCreateTrueColor( $targ_w, $targ_h );
+		imagecopyresampled($dst_r,$img_r,0,0,$_POST['x'],$_POST['y'],$targ_w,$targ_h,$_POST['w'],$_POST['h']);
+		imagejpeg($dst_r,$folder . '/icon/'.$userId.'.jpg.min.jpg');
+		imagedestroy($dst_r);
+		
+	}
+	
 	/*like user*/
 	function like(){
 		$uid=$this->input->post('uid');
