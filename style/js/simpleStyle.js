@@ -5,7 +5,7 @@ $(function(){
 	if(href=="来自上传")
 		location.attr('href','#');
 	/*图片对齐*/
-	$('.pic-desc').hide();
+	//$('.pic-desc').hide();
 	//pageCount count-prePageCount
 	var pageCount=$('#main').attr('data-count');
 	var countArr=pageCount.split('-');
@@ -16,9 +16,9 @@ $(function(){
 	}
 	/*图片信息提示*/
 	$('.pic-item').hover(function(){
-		$('.pic-desc',this).show();
+		$('.pic-desc',this).css({"opacity":"0.8"}).stop().animate({top:'0'},300);//show();
 	},function(){
-		$('.pic-desc',this).hide();
+		$('.pic-desc',this).css({"opacity":"1"}).stop().animate({top:'-55'},300);//.hide();
 	}).click(function(){
 		//div实现a
 		location.href=$('a:first',this).attr('href');
