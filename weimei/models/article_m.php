@@ -10,7 +10,7 @@ class Article_m extends CI_Model {
 	//编辑load文章
 	function edit($id) {
 		$query=$this->db->where('id',$id)->get('article');
-		return $query->row();
+		return $query->row_array();
 	}
 	//编辑完成
 	function edit_done($data){
@@ -22,7 +22,7 @@ class Article_m extends CI_Model {
 		$this->db->order_by ( "article.id", "desc" )->limit ( $count, $count * $page );
 		$this->db->join ( 'user', 'user.id=article.userId' );
 		$query = $this->db->get ();
-		$result['articles']=$query->result ();
+		$result['articles']=$query->result_array();
 		$result['count']=$this->db->count_all_results('article');
 		return $result;
 	}
@@ -31,13 +31,13 @@ class Article_m extends CI_Model {
 		$this->db->from ( 'article' )->where('article.id',$id);
 		$this->db->join ( 'user', 'user.id=article.userId' );
 		$query = $this->db->get ();
-		return $query->row();
+		return $query->row_array();
 	}
 	function get_pic($id) {
 		$this->db->select ( 'pic.name picname,src,pic.id picid' );
 		$this->db->from ( 'pic' );
 		$this->db->where('pic.id',$id);
 		$query = $this->db->get ();
-		return $query->row ();
+		return $query->row_array();
 	}
 }

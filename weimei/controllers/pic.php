@@ -4,7 +4,7 @@ class Pic extends CI_Controller {
 		parent::__construct ();
 		$this->load->helper ( 'url' );
 		$this->load->library ( 'session' );
-		//$this->output->enable_profiler ( TRUE );
+		$this->output->enable_profiler ( TRUE );
 	}
 	function index() {
 		//重定向到第一页
@@ -16,7 +16,7 @@ class Pic extends CI_Controller {
 		$this->uri->uri_string();
 		//echo $uri;
 		$order=$this->input->get('order');
-		$this->output->cache(3);
+		//$this->output->cache(3);
 		$this->load->helper ( 'self_define_helper' );
 		//获取url第三个参数值，默认为0
 		//$page = $this->uri->segment ( 3, 0 );
@@ -48,32 +48,32 @@ class Pic extends CI_Controller {
 	}
 	//显示单张图片
 	function one($id) {
-		$this->output->cache(10);
+		//$this->output->cache(10);
 		//$picid = $this->uri->segment ( 3, 0 );
 		$this->load->Model ( 'Pic_m' );
 		$data = $this->Pic_m->pic_one ( $id );
-		$data->userPic=$this->Pic_m->user_pic($data->userId);
+		$data['userPic']=$this->Pic_m->user_pic($data['userId']);
 		//获取tags
 		$this->load->Model ( 'Tag_m' );
-		$data->tag = $this->Tag_m->get_tag ( 'p' . $id, '' );
+		$data['tag']= $this->Tag_m->get_tag ( 'p' . $id, '' );
 		//keywords
-		$data->keywords=$data->title;
-		foreach ($data->tag as $tag){
-			$data->keywords.=','.$tag->name;
+		$data['keywords']=$data['title'];
+		foreach ($data['tag'] as $tag){
+			$data['keywords'].=','.$tag['name'];
 		}
-		$data->name=$data->title;
-		$data->title=$data->title?$data->title:$data->id;
-		$data->title.='图片';
+		$data['name']=$data['title'];
+		$data['title']=$data['title']?$data['title']:$data['id'];
+		$data['title'].='图片';
 		//获取喜欢用户
 		$this->load->Model ( 'Like_m' );
-		$data->likeUser=$this->Like_m->like_user("p$id");
+		$data['likeUser']=$this->Like_m->like_user("p$id");
 		//获取评论
 		$this->load->Model ( 'Comment_m' );
-		$data->comment = $this->Comment_m->get_comment ( 'p' . $id );
+		$data['comment ']= $this->Comment_m->get_comment ( 'p' . $id );
 		//load js
 		$this->load->helper ( 'self_define_helper' );
-		$data->js = js ( array ('jquery.fancybox-1.3.4' ) );
-		$data->css = css ( array ('fancybox/jquery.fancybox-1.3.4' ) );
+		$data['js']= js ( array ('jquery.fancybox-1.3.4' ) );
+		$data['css']= css ( array ('fancybox/jquery.fancybox-1.3.4' ) );
 		$this->load->view ( 'pic_one', $data );
 	}
 	function rename(){
@@ -147,7 +147,7 @@ class Pic extends CI_Controller {
 		$uploadpath = $folder . '/' . $foldername;
 		//new folder
 		if (! is_dir ( $uploadpath )) {
-			mkdir ( $uploadpath, 0755 );
+			mkdir ( $uploadpath, 0755,true);
 		
 		}
 		

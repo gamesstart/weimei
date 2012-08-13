@@ -25,7 +25,7 @@ class Avatar_m extends CI_Model {
 		$this->db->from ( 'avatar_album' );
 		$this->db->join ( 'avatar', 'avatar_album.firstId= avatar.id' )->join('user','user.id=avatar_album.userId');
 		$query = $this->db->get ();
-		$result['imgs']= $query->result();
+		$result['imgs']= $query->result_array();
 		$result['count']=$this->db->count_all_results('avatar_album');
 		return $result;
 	}
@@ -34,7 +34,7 @@ class Avatar_m extends CI_Model {
 		$this->db->from ( 'avatar' );
 		$this->db->where('albumId',$albumId)->join ( 'avatar_album', "avatar_album.id = avatar.albumId" )->join('user','user.id=avatar_album.userId');
 		$query = $this->db->get ();
-		return $query->result();
+		return $query->result_array();
 	}
 	function upload_submit($data){
 		$this->db->where ( 'id', $data['id'])->update ( 'avatar_album',$data);

@@ -15,9 +15,9 @@ class User extends CI_Controller {
 		$this->output->cache(60);
 		$id=$this->uri->segment(3,1);
 		$data=$this->User_m->get_user_msg($id);
-		$data->userId=$id;
-		$data->name=$data->username;
-		$data->title=$data->username;
+		$data['userId']=$id;
+		$data['name']=$data['username'];
+		$data['title']=$data['username'];
 		$this->load->helper('self_define_helper');
 		$this->load->view('user_i',$data);
 	}
@@ -58,11 +58,11 @@ class User extends CI_Controller {
 			$password = $this->input->post ( 'password' );
 			$user = $this->User_m->check_login ( $email, $password );
 			if (count ( $user )) {
-				$this->session->set_userdata ( array ('userId' => $user->id, 'username' => $user->username, 'password' =>$user->password) );
+				$this->session->set_userdata ( array ('userId' => $user['id'], 'username' => $user['username'], 'password' =>$user['password']) );
 				//设置cookie
 				$cookie = array(
                    'name'   => 'userId',
-                   'value'  => $user->id,
+                   'value'  => $user['id'],
                    'expire' => '86400',
                    'domain' => getDomain(),
                    'path'   => '/'
@@ -70,7 +70,7 @@ class User extends CI_Controller {
              $this->input->set_cookie($cookie); 
              $cookie = array(
                    'name'   => 'username',
-                   'value'  => $user->username,
+                   'value'  => $user['username'],
                    'expire' => '86400',
                    'domain' => getDomain(),
                    'path'   => '/'
@@ -78,7 +78,7 @@ class User extends CI_Controller {
                $this->input->set_cookie($cookie); 
                $cookie = array(
                		'name'   => 'icon',
-               		'value'  => $user->icon,
+               		'value'  => $user['icon'],
                		'expire' => '86400',
                		'domain' => getDomain(),
                		'path'   => '/'
@@ -123,11 +123,11 @@ class User extends CI_Controller {
 			 );
 			$this->User_m->update_user_msg ( $data );
 			$data = $this->User_m->get_user_msg ( $userid );
-			$data->title= '帐号设置';
+			$data['title']= '帐号设置';
 			$this->load->view ( 'user_setting', $data );
 		} else {
 			$data = $this->User_m->get_user_msg ( $this->session->userdata ( 'userId' ) );
-			$data->title= '帐号设置';
+			$data['title']= '帐号设置';
 			$this->load->view ( 'user_setting', $data );
 		}
 	}
@@ -168,7 +168,7 @@ class User extends CI_Controller {
 				$config ['overwrite'] = TRUE;
 				$config ['file_name'] = $this->session->userdata ( 'userId' );
 				if (! is_dir ( $config ['upload_path'] ))
-					mkdir ( $config ['upload_path'], 0755 );
+					mkdir ( $config ['upload_path'], 0755,true);
 				$this->load->library ( 'upload', $config );
 				$this->session->userdata ( 'userId' );
 				if (! $this->upload->do_upload ()) {

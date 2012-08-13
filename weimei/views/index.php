@@ -46,7 +46,7 @@
 			<h3 class="h2-t">最近加入...</h3>
 			<div id="latest-user-avatar">
 			<?php foreach ($users as $user){?>
-			<a href="/user/i/<?=$user->id?>"><img src="<?=getMiniPic($user->icon)?>" alt="" /></a>
+			<a href="/user/i/<?=$user['id']?>"><img src="<?=getMiniPic($user['icon'])?>" alt="" /></a>
 			<?php }?>
 			</div>
 			</div>
@@ -58,14 +58,14 @@
 		<div id="main">
 			<div id="pic" >
 <?php $imgss=sort3Array($imgs); foreach ( $imgss[0] as $key=>$imgs ) { ?>
-				<div class="pic-list" data-h='<?php echo $imgss[0][$key][0]->height-$imgss[1][$key][0]; ?>' >
+				<div class="pic-list" data-h='<?php echo $imgss[0][$key][0]['height']-$imgss[1][$key][0]; ?>' >
 				<?php foreach($imgs as $img){ ?>
 					<div class="pic-item">
 						<div class="pic-desc">
-							<h2><?=$img->name?></h2>
-							<span>加入于<?=getTime(strtotime($img->date))?></span><a href="/user/i/<?=$img->userId?>"><?=$img->username?></a>
+							<h2><?=$img['name']?></h2>
+							<span>加入于<?=getTime(strtotime($img['date']))?></span><a href="/user/i/<?=$img['userId']?>"><?=$img->username?></a>
 						</div>
-						<a href="/pic/<?=$img->id?>"><img src="<?=getMiniPic($img->src)?>"></a>
+						<a href="/pic/<?=$img['id']?>"><img src="<?=getMiniPic($img['src'])?>"></a>
 					</div>
 				<?php } ?>
 				</div>

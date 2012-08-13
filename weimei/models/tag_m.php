@@ -10,11 +10,11 @@ class Tag_m extends CI_Model {
 		for($i = 0; $i < $count; $i ++) {
 			//先行判断tag存在不，取id，并将sum加一
 			$query = $this->db->get_where ( 'tag', array ('name' => $tag [$i] ) );
-			if ($result = $query->row ()) {
-				if(!in_array($id,explode(',',$result->targetId))){
+			if ($result = $query->row_array()) {
+				if(!in_array($id,explode(',',$result['targetId']))){
 				$targetId = $result->targetId . $id;
-				$tagId=$result->id;
-				$this->db->where ( 'id',$tagId)->update ( 'tag', array ('targetId' => $targetId . ',', 'sum' => $result->sum + 1 ) );
+				$tagId=$result['id'];
+				$this->db->where ( 'id',$tagId)->update ( 'tag', array ('targetId' => $targetId . ',', 'sum' => $result['sum ']+ 1 ) );
 				$this->db->query("UPDATE `user` SET tagId = concat( tagId,'$tagId,') WHERE id =$userId");
 				}
 			} else {
@@ -29,8 +29,8 @@ class Tag_m extends CI_Model {
 	//获取id或者tag的相关文档
  	function get_tag($id, $tag,$userId) {
 		if ($tag) {
-			$targetId=$this->db->where ( 'name', $tag )->select ( 'targetId' )->get ( 'tag' )->result ();
-			$targetId=explode(',',$targetId[0]->targetId);
+			$targetId=$this->db->where ( 'name', $tag )->select ( 'targetId' )->get ( 'tag' )->result_array ();
+			$targetId=explode(',',$targetId[0]['targetId']);
 			//pop ‘’
 			array_pop($targetId);
 			//a1,e2,p3 
@@ -51,35 +51,33 @@ class Tag_m extends CI_Model {
 						break;
 				}
 			}
-			$tags=new stdClass();
-			$tags->a=$tags->p=$tags->e='';
 			if ($aId){
 				$query = $this->db->where_in('avatar_album.id',$aId)->select('avatar_album.id,name,date,username')->join('user','avatar_album.userId=user.id')->get ('avatar_album');
-				$result=$query->result();
-				$tags->a=$result;
+				$result=$query->result_array();
+				$tags['a']=$result;
 				//$tags->
 			}
 			if ($pId){
 				$query = $this->db->where_in('pic.id',$pId)->select('pic.id,name,pic.date,username')->join('user','pic.userId=user.id')->get ('pic');
-				$result=$query->result();
-				$tags->p=$result;
+				$result=$query->result_array();
+				$tags['p']=$result;
 				//$tags->
 			}
 			if ($eId){
 				$query = $this->db->where_in('article.id',$eId)->select('article.id,name,username,date')->join('user','article.userId=user.id')->get ('article');
-				$result=$query->result();
-				$tags->e=$result;
+				$result=$query->result_array();
+				$tags['e']=$result;
 				//$tags->
 			}
 			return $tags;
 			//$aId=
 		} else if($id){
-			return $this->db->like ( 'targetId', $id . ',' )->select ( 'id,name' )->get ( 'tag' )->result ();
+			return $this->db->like ( 'targetId', $id . ',' )->select ( 'id,name' )->get ( 'tag' )->result_array();
 		}else{
-			$res=$this->db->select('tagId')->where('id',$userId)->get('user')->row();
-			$tagId=split(',', $res->tagId);
+			$res=$this->db->select('tagId')->where('id',$userId)->get('user')->row_array();
+			$tagId=split(',', $res['tagId']);
 			$tags=$this->db->where_in('id',$tagId)->get('tag');
-			return  $tags->result();
+			return  $tags->result_array();
 		}
 	
 	}

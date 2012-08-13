@@ -5,7 +5,7 @@ class article extends CI_Controller {
 		$this->load->helper ( 'url' );
 		$this->load->library ( 'session' );
 		$this->load->helper ( 'self_define_helper' );
-		//$this->output->enable_profiler ( TRUE );
+		$this->output->enable_profiler ( TRUE );
 	}
 	function index() {
 		$this->page(0);
@@ -23,7 +23,7 @@ class article extends CI_Controller {
 			$this->load->Model ( 'Article_m' );
 			$res=$this->Article_m->get_pic($res[1]);
 			if($res->src)
-			$data['nail']=$res->src;
+			$data['nail']=$res['src'];
 			if($this->Article_m->add($data)){
 				//显示成功信息并跳转
 				$data=array('msg'=>'提交成功',
@@ -56,8 +56,8 @@ class article extends CI_Controller {
 				preg_match($pattern, $data['content'],$res);
 				$this->load->Model ( 'Article_m' );
 				$res=$this->Article_m->get_pic($res[1]);
-				if($res->src)
-					$data['nail']=$res->src;
+				if($res['src'])
+					$data['nail']=$res['src'];
 				$this->Article_m->edit_done($data);
 				//显示成功信息并跳转
 				$data=array('msg'=>'修改成功',
@@ -91,31 +91,31 @@ class article extends CI_Controller {
 	}
 	function view($id){
 		$this->load->helper ( 'self_define_helper' );
-		$this->output->cache(3);
+		//$this->output->cache(3);
 		//$id= $this->uri->segment ( 3, 0 );
 		$this->load->Model('Article_m');
 		$data=$this->Article_m->view($id);
 		//获取图片
 		$pattern = '/\[img\](\d+?)\[\/img\]/i';
-		$data->content=preg_replace_callback($pattern,array($this,'get_pic'),$data->content);
+		$data['content']=preg_replace_callback($pattern,array($this,'get_pic'),$data['content']);
 		//获取tags
 		$this->load->Model ( 'Tag_m' );
-		$data->tag = $this->Tag_m->get_tag ( 'e' . $id, '' );
+		$data['tag ']= $this->Tag_m->get_tag ( 'e' . $id, '' );
 		//keywords
-		$data->keywords=$data->title;
-		foreach ($data->tag as $tag){
-			$data->keywords.=','.$tag->name;
+		$data['keywords']=$data['title'];
+		foreach ($data['tag'] as $tag){
+			$data['keywords'].=','.$tag['name'];
 		}
 		//获取喜欢用户
 		$this->load->Model ( 'Like_m' );
 		$data->likeUser=$this->Like_m->like_user("e$id");
 		//获取评论
 		$this->load->Model ( 'Comment_m' );
-		$data->comment = $this->Comment_m->get_comment ( 'e' . $id );
+		$data['comment']= $this->Comment_m->get_comment ( 'e' . $id );
 		$this->load->view('article_view',$data);
 	}
 	function get_pic($pid){
 		$d=$this->Article_m->get_pic($pid[1]);
-		return "<img src=$d->src>";
+		return '<img src="'.$d['src'].'">';
 	}
 }

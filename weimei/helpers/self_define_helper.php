@@ -105,31 +105,24 @@ function download_file($url,$filename){
 	curl_close($ch);
 	return true;
 }
-//std sort;
-function stdSort($a,$b){
-	if($a->height>$b->height)
-		return 0;
-	else
-		return 1;
-}
-//std 3 sort
+//array 3 sort
 function sort3Array($array){
-	usort($array,"stdSort");
+	usort($array);
 	$a=$b=$c=0;
 	$count=count($array);
 	for($i=0;$i<$count;$i++){
 		if($a>=$c&&$b>=$c){
-			$c+=$array[$i]->height;
+			$c+=$array[$i]['height'];
 			$r[0][0][]=$array[$i];
 			continue;
 		}
 		if($b>=$a&&$c>=$a){
-			$a+=$array[$i]->height;
+			$a+=$array[$i]['height'];
 			$r[0][1][]=$array[$i];
 			continue;
 		}
 		if($a>=$b&&$c>=$b){
-			$b+=$array[$i]->height;
+			$b+=$array[$i]['height'];
 			$r[0][2][]=$array[$i];
 			continue;
 		}
@@ -141,18 +134,18 @@ function sort3Array($array){
 	$r[1][2][0]=$b-$res[0];
 	return $r;
 }
-//std 3 sort
+//array 3 sort
 function sort2Array($array){
-	usort($array,"stdSort");
+	usort($array);
 	$a=$b=0;
 	$count=count($array);
 	for($i=0;$i<$count;$i++){
 		if($a>=$b){
-			$b+=$array[$i]->height;
+			$b+=$array[$i]['height'];
 			$r[0][0][]=$array[$i];
 			continue;
 		}else{
-			$a+=$array[$i]->height;
+			$a+=$array[$i]['height'];
 			$r[0][1][]=$array[$i];
 			continue;
 		}
@@ -163,13 +156,4 @@ function sort2Array($array){
 	$r[1][1][0]=$a-$res[0];
 	return $r;
 }
-
-
-
-
-
-
-
-
-
 

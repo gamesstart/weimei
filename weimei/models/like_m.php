@@ -33,6 +33,6 @@ class Like_m extends CI_Model {
 		$this->db->query("UPDATE `user` SET likeItem = replace(likeItem,'$id,','') WHERE id =$userId");
 	}
 	function like_user($id){
-		return $this->db->like ( 'likeItem', "$id," )->select ( 'id,username name,icon' )->get ( 'user' )->result ();
+		return $this->db->like ( 'likeItem', "$id," )->select ( 'id,username name,icon' )->get ( 'user' )->result_array();
 	}
 }

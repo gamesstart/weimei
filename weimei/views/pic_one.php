@@ -12,7 +12,7 @@
 <h2 class='h2-t'>这些人也喜欢······</h2>
 <div id="like-user">
 <?php foreach ($likeUser as $l){?>
-<a href=/user/i/<?=$l->id?> title="<?=$l->name?>"><img src="<?=$l->icon?>"></a>
+<a href=/user/i/<?=$l['id']?> title="<?=$l['name']?>"><img src="<?=$l['icon']?>"></a>
 <?php }?>
 </div>
 <h2 class='h2-t'>回应······</h2>
@@ -29,7 +29,7 @@
 			<div id="labels-list">
 			<?php
 			foreach ( $tag as $tag) {
-				echo "<a href='/tag/$tag->name'>" . $tag->name. '</a>';
+				echo "<a href='/tag/".$tag['name']."'>" . $tag['name']. '</a>';
 			}
 			?>
 			</div>
@@ -46,7 +46,7 @@
 	<?php 
 	
 		foreach ($userPic as $pic){
-			echo "<a href='/pic/$pic->id'><img src='".miniPic($pic->src)."'/></a>";
+			echo "<a href='/pic/".$pic['id']."'><img src='".miniPic($pic['src'])."'/></a>";
 		}
 	?>
 	</div>

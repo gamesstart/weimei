@@ -12,8 +12,8 @@ class Album_m extends CI_Model {
 		$this->db->order_by ( "pic_album.id", "desc" )->limit ( $count, $count * $page );
 		$this->db->join ( 'user', 'user.id=pic_album.userId' )->join ( 'pic', 'pic_album.firstId=pic.id' );
 		$query = $this->db->get ();
-		$result['imgs']=$query->result ();
-		$result['count']=count($this->db->from('pic_album')->join('pic','pic_album.firstId=pic.id')->get()->result());
+		$result['imgs']=$query->result_array();
+		$result['count']=count($this->db->from('pic_album')->join('pic','pic_album.firstId=pic.id')->get()->result_array());
 		return  $result;
 	}
 	function detail($albumId, $page, $count) {
@@ -23,7 +23,7 @@ class Album_m extends CI_Model {
 		$picId=explode(',',preg_replace('/^,(.*)$/','\\1',$album['0']->picId));
 		$pic=$this->db->select('user.id userId,user.username userName,height,pic.id,pic.name,pic.date,pic.src')->where_in('pic.id',$picId)->from('pic')->join('user','user.id=pic.userId')->get()->result();
 		$pic->name=$album['0']->name;
-		$pic['count']=count($this->db->where_in('pic.id',$picId)->get('pic')->result());
+		$pic['count']=count($this->db->where_in('pic.id',$picId)->get('pic')->result_array());
 		return $pic;
 		//$this->db->select ( 'pic_album.name,pic.id,pic.src src,user.username userName,pic_album.date date' );
 		//$query = $this->db->from ( 'pic_album' )->join ( 'pic', 'pic_album.id=pic.albumId' )->join ( 'user', 'pic_album.userId=user.id' )->where ( 'pic_album.id', $albumId )->get ();

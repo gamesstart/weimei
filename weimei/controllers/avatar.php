@@ -47,13 +47,13 @@ class Avatar extends CI_Controller {
 		$data['tag'] = $this->Tag_m->get_tag ( 'a' . $data ['id'], '' );
 		$this->load->Model ( 'Comment_m' );
 		$data['comment']= $this->Comment_m->get_comment ( 'a' .$data ['id']);
-		$data ['title'] = $data ['imgs'] [0]->name.'头像';
+		$data ['title'] = $data ['imgs'] [0]['name'].'头像';
 		$data['keywords']=$data['title'];
 		//获取喜欢用户
 		$this->load->Model ( 'Like_m' );
 		$data['likeUser']=$this->Like_m->like_user("a$id");
 		foreach ($data['tag'] as $tag){
-			$data['keywords'].=','.$tag->name;
+			$data['keywords'].=','.$tag['name'];
 		}
 		$this->load->view ( 'avatar_one', $data );
 	}

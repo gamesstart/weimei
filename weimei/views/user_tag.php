@@ -18,7 +18,7 @@
 	<div id="labels-list">
 		<?php
 		foreach ( $tag as $tag) {
-			echo "<a href='".site_url('/tag/'.$tag->name)."'>" . $tag->name. '</a>';
+			echo "<a href='".site_url('/tag/'.$tag['name'])."'>" . $tag['name']. '</a>';
 		}
 		?>
 		</div>
@@ -31,13 +31,13 @@
 			<div id="list-like-u">
 	<h2 class="h2-t">这些人也喜欢Ta······</h2>
 		<?php foreach ($liked as $l){?>
-		<a href="/user/i/<?=$l->userId?>" title="<?=$l->username?>"><img src="<?=getMiniPic($l->icon)?>" /></a>
+		<a href="/user/i/<?=$l['userId']?>" title="<?=$l['username']?>"><img src="<?=getMiniPic($l['icon'])?>" /></a>
 		<?php }?>
 	</div>
 	<div id="list-u-like">
 	<h2 class="h2-t">Ta也喜欢这些人······</h2>
 		<?php foreach ($like as $l){?>
-		<a href="/user/i/<?=$l->userId?>" title="<?=$l->username?>"><img src="<?=getMiniPic($l->icon)?>" /></a>
+		<a href="/user/i/<?=$l['userId']?>" title="<?=$l['username']?>"><img src="<?=getMiniPic($l['icon'])?>" /></a>
 		<?php }?>
 	</div>
 	</div>

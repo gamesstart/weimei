@@ -118,7 +118,7 @@ $(function() {
 	$('#comment-submit').click(function(){
 		var comment=$('#comment-area').val();
 		if(userId&&comment){
-			var id=(tid?tid:tid)?tid:tid;
+			var id=tid?tid:'u'+userId;
 			$('#commets').append('<div class="commentsItem"><a href="/user/i/56" class="commentsAvatar"><img src="'+icon+'"></a><div class="reply-doc"><div class="commentsMsg"><a href="/user/i/'+userId+'">'+username+'</a>于1分钟前说|<a href="#reply" class="reply">回复</a></div><div class="cc-top"></div><div class="commentsContent"><p>'+comment+'</p></div><div class="cc-bottom"></div></div></div>');
 			$.ajax({
 				type:'post',
