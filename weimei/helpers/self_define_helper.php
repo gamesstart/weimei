@@ -110,7 +110,7 @@ function sort3Array($array){
 	usort($array);
 	$a=$b=$c=0;
 	$count=count($array);
-	for($i=0;$i<$count;$i++){
+	for($i=0;$i<$count-1;$i++){
 		if($a>=$c&&$b>=$c){
 			$c+=$array[$i]['height'];
 			$r[0][0][]=$array[$i];
@@ -139,7 +139,7 @@ function sort2Array($array){
 	usort($array);
 	$a=$b=0;
 	$count=count($array);
-	for($i=0;$i<$count;$i++){
+	for($i=0;$i<$count-1;$i++){
 		if($a>=$b){
 			$b+=$array[$i]['height'];
 			$r[0][0][]=$array[$i];
