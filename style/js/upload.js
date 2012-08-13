@@ -56,8 +56,8 @@ $(function(){
           //w=$('#cropbox').css('width').replace(/px/,'');
           //h=$('#cropbox').css('height').replace(/px/,'');
           
-          w=$('.jcrop-holder').css('width').replace(/px/,'');
-          h=$('.jcrop-holder').css('height').replace(/px/,'');
+          var w=$('.jcrop-holder').css('width').replace(/px/,'');
+          var h=$('.jcrop-holder').css('height').replace(/px/,'');
           $('#user-avatar1').css({
             width: Math.round(rx * w )+ 'px',
             height: Math.round(ry * h)+ 'px',
