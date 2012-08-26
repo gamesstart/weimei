@@ -29,9 +29,13 @@ class  User_m extends CI_Model{
       		$this->db->update('user', array('password'=>$data['newpassword']));
       	return $this->db->affected_rows();
 		}
-		function get_user_msg($id){
-		   $query = $this->db->get_where('user',array('id'=>$id));
-		   return $query->row_array();
+		function get_user_msg($id,$username){
+			if($id){
+			   $query = $this->db->get_where('user',array('id'=>$id));
+			}else{
+			   $query = $this->db->get_where('user',array('username'=>$username));
+			}
+		   	   return $query->row_array();
 		}
 		function get_user_pic($page,$count,$userId){
 			$this->db->select ('name,src,height,id,date' );
