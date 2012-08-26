@@ -53,6 +53,7 @@ class Pic extends CI_Controller {
 		$this->load->Model ( 'Pic_m' );
 		$data = $this->Pic_m->pic_one ( $id );
 		$data['userPic']=$this->Pic_m->user_pic($data['userId']);
+		$data['next_pre']=$this->Pic_m->next_pre_pic($id);
 		//获取tags
 		$this->load->Model ( 'Tag_m' );
 		$data['tag']= $this->Tag_m->get_tag ( 'p' . $id, '' );
@@ -69,7 +70,7 @@ class Pic extends CI_Controller {
 		$data['likeUser']=$this->Like_m->like_user("p$id");
 		//获取评论
 		$this->load->Model ( 'Comment_m' );
-		$data['comment ']= $this->Comment_m->get_comment ( 'p' . $id );
+		$data['comment']= $this->Comment_m->get_comment ( 'p' . $id );
 		//load js
 		$this->load->helper ( 'self_define_helper' );
 		$data['js']= js ( array ('jquery.fancybox-1.3.4' ) );

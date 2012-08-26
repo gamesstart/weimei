@@ -57,6 +57,17 @@ class Pic_m extends CI_Model {
 		$query=$this->db->where('pic.userId',$userId)->limit(6,0)->order_by('RAND()')->get();
 		return $query->result_array(); 
 	}
+	function next_pre_pic($id){
+		$this->db->select ( 'src,id,name' );
+		$this->db->from ( 'pic' );
+		$query=$this->db->where("id=(SELECT max(id) FROM `pic` WHERE `id` < '$id')")->get();
+		$data['pre']=$query->result_array(); 
+		$this->db->select ( 'src,id,name' );
+		$this->db->from ( 'pic' );
+		$query=$this->db->where("id=(SELECT min(id) FROM `pic` WHERE `id` > '$id')")->get();
+		$data['next']=$query->result_array(); 
+		return $data;
+	}
 	function upload_submit($data){
 		if($data['firstId']){
 			$this->db->where ( 'id', $data['id'])->update ( 'pic_album',$data);

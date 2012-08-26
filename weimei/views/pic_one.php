@@ -1,5 +1,6 @@
 <?php $this->load->view ( 'header' ); ?>
 <div id="main">
+	<a name="image"></a>
 <div id="left">
 <h1 id="title"><?=$name?></h1>
 <div class="height1"></div>
@@ -24,6 +25,13 @@
 	<a href="/user/i/<?=$userId?>"><img src="<?=getMiniPic($icon)?>"></a><span><a href="/user/i/<?=$userId?>"><?=$username?></a><fn-clear>加入于<?=$date?></span>
 	</div>
 		<!-- right user msg end-->
+	<div class="right-box" id="next-pre">
+		<h2 class="h2-t">上一张&下一张</h2>
+		<a href="/pic/<?=$next_pre['pre'][0]['id']?>#image" title="上一张"><img src="<?=miniPic($next_pre['pre'][0]['src'])?>" alt="<?=$next_pre['pre'][0]['name']?>"></a>
+		<a href="/pic/<?=$next_pre['next'][0]['id']?>#image" title="下一张"><img src="<?=miniPic($next_pre['next'][0]['src'])?>" alt="<?=$next_pre['next'][0]['name']?>"></a>
+		<div class='fn-clear'></div>
+    </div>
+
 	<div id="labels" class="right-box">
 		<h2 class='h2-t'>标签...</h2>
 			<div id="labels-list">
@@ -39,6 +47,7 @@
 <form method="post"><input type="text" name="tags" id="tags" placeholder="标签1,标签2,标签3"><input type="button" id="tag-btn" class="red-btn" value="添加"> 
 <input type="hidden" id="tid" name="tid" value="p<?=$id?>"></form>
 </div>
+		<div class='fn-clear'></div>
 	</div>
 	<!--tags end -->
 		<div  class="right-box" id="relate-pic">
@@ -46,9 +55,10 @@
 	<?php 
 	
 		foreach ($userPic as $pic){
-			echo "<a href='/pic/".$pic['id']."'><img src='".miniPic($pic['src'])."'/></a>";
+			echo '<a href="/pic/'.$pic['id'].'#image"><img src="'.miniPic($pic['src']).'"/></a>';
 		}
 	?>
+		<div class='fn-clear'></div>
 	</div>
 	<!-- relate pic -->
 <!---left end---></div>
