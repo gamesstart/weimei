@@ -72,7 +72,8 @@ class Tag_m extends CI_Model {
 			return $tags;
 			//$aId=
 		} else if($id){
-			return $this->db->like ( 'targetId', $id . ',' )->select ( 'id,name' )->get ( 'tag' )->result_array();
+			//->like ( 'targetId', $id . ',' )
+			return $this->db->select ( 'id,name' )->where('MATCH(targetId) AGAINST("'.$id.'," IN BOOLEAN MODE)')->get ( 'tag' )->result_array();
 		}else{
 			$res=$this->db->select('tagId')->where('id',$userId)->get('user')->row_array();
 			$tagId=split(',', $res['tagId']);
